@@ -1,0 +1,14 @@
+﻿@{
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (ViewContext.Controller.ViewBag.IsLogin == true)
+    {
+        Layout = "~/Views/Shared/_layout_Login.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+}

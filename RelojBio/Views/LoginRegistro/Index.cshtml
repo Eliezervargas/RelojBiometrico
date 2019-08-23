@@ -1,0 +1,63 @@
+﻿@model RelojBio.ViewModel.LoginRegistroViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+    <body class="login">
+        <div>
+            <a class="hiddenanchor" id="signup"></a>
+            <a class="hiddenanchor" id="signin"></a>
+
+            <div class="login_wrapper">
+                <div class="animate form login_form">
+                    <section class="login_content">
+                        <form>
+                            <h1>Inicio de sesión</h1>
+                            <div>
+                                <input type="text" class="form-control" placeholder="Usuario" required="" name="Login" id="Login" value="@Model.Login" />
+                                <br />
+                            </div>
+                            <div>
+                                <input type="password" class="form-control" placeholder="Password" required="" name="Password" id="Password" value="@Model.Password" />
+                                <br />
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-block">Ingresar<i class="icon-circle-right2 position-right"></i></button>
+                                @*<a class="btn btn-default submit" href="">Entrar</a>*@
+                                @*<a class="reset_pass" href="#">Lost your password?</a>*@
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="separator">
+                                <p class="change_link">
+                                    Deseas un Usuario?
+                                    <a href="#signup" class="to_register"> Comunicate Con Soporte...</a>
+                                </p>
+
+                                <div class="clearfix"></div>
+                                <br />
+
+                                <div>
+                                    <h1><i class="fa fa-group"></i> Desarrollos a tu medida</h1>
+                                    <p>©2019 All Rights Reserved. Eliezer Vargas y Franklin Montenegro!</p>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+
+            </div>
+        </div>
+    </body>
+
+}
+

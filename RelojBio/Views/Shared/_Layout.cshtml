@@ -1,0 +1,313 @@
+﻿@using RelojBio.ViewModel;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <title>@ViewBag.Title - Reloj Biometrico</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/ContentPG/Stylos/bootstrap.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/font-awesome.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/nprogress.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/green.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/jqvmap.min.css" rel="stylesheet" />
+    <link href="~/ContentPG/Stylos/daterangepicker.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/custom.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/toastr.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+
+            @*Menu Lateral*@
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><i class="fa fa-calendar"></i> <span>Biometrico</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="~/ContentPG/images/img.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Bienvenido</span>
+                            <h2>@Session["UserName"]</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            @{
+                                int wIsAdmin = 0;
+
+                                if (Session["Rol"] != null)
+                                {
+
+                                    if (Convert.ToInt32(Session["Rol"]) == 1)
+                                    {
+                                        wIsAdmin = 1;
+                                    }
+                                }
+
+                                if (wIsAdmin == 1)
+                                {
+                                    <h3>Menu Administrador</h3>
+
+                                    <ul class="nav side-menu">
+                                        <li>
+                                            <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                        </li>
+
+                                        <li>
+                                            <a><i class="fa fa-table"></i>Maestros<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="tables.html"></a>Usuarios</li>
+                                                <li><a href="tables_dynamic.html">Roles</a></li>
+                                                <li><a href="tables_dynamic.html">Compañia</a></li>
+                                                <li><a href="tables_dynamic.html">Asignacion de Roles</a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+
+                                }
+                                else
+                                {
+                                    <h3>General</h3>
+
+                                    <ul class="nav side-menu">
+                                        <li>
+                                            <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Home </a>
+                                        </li>
+                                        <li>
+                                            <a><i class="fa fa-edit"></i> Mantenimiento<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="#">Empresas</a></li>
+                                                <li><a href="@Url.Action("Index","Empleado")">Empleados</a></li>
+                                                <li><a href="#">Departamentos</a></li>
+                                                <li><a href="#">Días Festivos</a></li>
+                                                <li><a href="#">Centro de Costos</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a><i class="glyphicon glyphicon-random"></i> Dispositivos<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="#">Dispositivos</a></li>
+                                                <li><a href="#">Descargar Usb</a></li>
+                                                <li><a href="#">Descargar Red</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a><i class="fa fa-desktop"></i> Procesos<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="#">Horarios</a></li>
+                                                <li><a href="#">Turnos</a></li>
+                                                <li><a href="#">Descansos</a></li>
+                                                <li><a href="#">Configuracion rapida de Turnos</a></li>
+                                                <li><a href="#">Extractor de Registros</a></li>
+                                                <li><a href="#">Administracion de Fichajes</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a><i class="fa fa-file-pdf-o"></i> Reportes<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="#">Control Marcaciones</a></li>
+                                                <li><a href="#">Control Asistencia</a></li>
+                                                <li><a href="#">Control Tiempo Libre</a></li>
+                                                <li><a href="#">Seguimiento Excepción</a></li>
+                                                <li><a href="#">Seguimiento Marcación</a></li>
+                                                <li><a href="#">Seguimiento de Fichajes</a></li>
+                                                <li><a href="#">Control Asistencia BN</a></li>
+                                            </ul>
+                                        </li>
+
+
+                                    </ul>
+
+                                }
+
+                            }
+                        </div>
+
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            @*<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>*@
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            @*<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>*@
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            @*<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>*@
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Salir" href="@Url.Action("LogOut","LoginRegistro")">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            @*Barra Superior*@
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="~/ContentPG/images/img.jpg" alt="">@Session["UserName"]
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li>@Html.ActionLink("Perfil", "Edit", "Profile")</li>
+                                    <li class="fa fa-sign-out pull-right">@Url.Action("LogOut", "Login")Salir</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+
+                    </nav>
+                </div>
+            </div>
+
+            @*Donde se renderiza el contenido de cada pagina*@
+            @RenderBody()
+
+            @*Pie de pagina*@
+            <footer>
+                <div class="pull-right">
+                    Eliezer Vargas - </a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/ContentPG/Script/jquery.min.js"></script>
+    <script src="~/ContentPG/Script/toastr.min.js"></script>
+    <script src="~/ContentPG/Script/bootstrap.min.js"></script>
+    <script src="~/ContentPG/Script/fastclick.js"></script>
+    <script src="~/ContentPG/Script/nprogress.js"></script>
+    <script src="~/ContentPG/Script/Chart.min.js"></script>
+    <script src="~/ContentPG/Script/gauge.min.js"></script>
+    <script src="~/ContentPG/Script/bootstrap-progressbar.min.js"></script>
+    <script src="~/ContentPG/Script/icheck.min.js"></script>
+    <script src="~/ContentPG/Script/skycons.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.pie.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.time.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.stack.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.resize.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.orderBars.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.spline.min.js"></script>
+    <script src="~/ContentPG/Script/curvedLines.js"></script>
+    <script src="~/ContentPG/Script/date.js"></script>
+    <script src="~/ContentPG/Script/jquery.vmap.js"></script>
+    <script src="~/ContentPG/Script/jquery.vmap.world.js"></script>
+    <script src="~/ContentPG/Script/jquery.vmap.sampledata.js"></script>
+    <script src="~/ContentPG/Script/moment.min.js"></script>
+    <script src="~/ContentPG/Script/daterangepicker.js"></script>
+    <script src="~/ContentPG/Script/toastr.min.js"></script>
+
+
+
+    <script src="~/ContentPG/Script/jquery.dataTables.min.js"></script>
+        <script src="~/ContentPG/Script/dataTables.bootstrap.min.js"></script>
+        <script src="~/ContentPG/Script/dataTables.buttons.min.js"></script>
+        <script src="~/ContentPG/Script/buttons.bootstrap.min.js"></script>
+        <script src="~/ContentPG/Script/buttons.flash.min.js"></script>
+        <script src="~/ContentPG/Script/buttons.html5.min.js"></script>
+        <script src="~/ContentPG/Script/buttons.print.min.js"></script>
+        <script src="~/ContentPG/Script/dataTables.fixedHeader.min.js"></script>
+        <script src="~/ContentPG/Script/dataTables.keyTable.min.js"></script>
+        <script src="~/ContentPG/Script/dataTables.responsive.min.js"></script>
+        <script src="~/ContentPG/Script/responsive.bootstrap.js"></script>
+        <script src="~/ContentPG/Script/dataTables.scroller.min.js"></script>
+        <script src="~/ContentPG/Script/jszip.min.js"></script>
+        <script src="~/ContentPG/Script/pdfmake.min.js"></script>
+        <script src="~/ContentPG/Script/vfs_fonts.js"></script>
+
+
+    <script src="~/ContentPG/Script/custom.min.js"></script>
+
+
+
+    @if (Session["Mensaje"] != null)
+    {
+
+        Mensaje OMensaje = Session["Mensaje"] as Mensaje;
+
+        var wTipo = OMensaje.Tipo;
+        var wMsg = OMensaje.Msg;
+
+        if (OMensaje.Tipo == "Exito")
+        {
+            <script type="text/javascript">
+            toastr.success('@wMsg.ToString()', '');
+            </script>
+
+        }
+        else if (OMensaje.Tipo == "Error")
+        {
+            <script type="text/javascript">
+            toastr.error('@wMsg.ToString()', 'Error');
+            </script>
+
+        }
+        else if (OMensaje.Tipo == "Alerta")
+        {
+            <script type="text/javascript">
+            toastr.warning('@wMsg.ToString()', 'Alerta');
+            </script>
+
+        }
+        else if (OMensaje.Tipo == "Info")
+        {
+            <script type="text/javascript">
+            toastr.info('@wMsg.ToString()', 'Información');
+            </script>
+
+        }
+
+
+        Session["Mensaje"] = null;
+
+
+
+    }
+
+
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

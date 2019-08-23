@@ -1,0 +1,2499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RELOJBIOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Break">
+    <Key>
+      <PropertyRef Name="BreakID" />
+    </Key>
+    <Property Name="BreakID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="End" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Deduct" Type="Boolean" Nullable="false" />
+    <Property Name="AutoDeduct" Type="Boolean" />
+    <Property Name="DeductMinute" Type="Int32" />
+    <Property Name="MaxLong" Type="Int32" />
+    <Property Name="MinLong" Type="Int32" />
+    <Property Name="OvercountPaycode" Type="Int32" />
+    <Property Name="Overcount" Type="Boolean" />
+    <Property Name="NeedCheck" Type="Boolean" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BreakShift" Relationship="Self.FK_BreakShift_Break" FromRole="Break" ToRole="BreakShift" />
+  </EntityType>
+  <EntityType Name="BreakShift">
+    <Key>
+      <PropertyRef Name="BreakShiftID" />
+    </Key>
+    <Property Name="BreakShiftID" Type="Int32" Nullable="false" />
+    <Property Name="BreakID" Type="Int32" />
+    <Property Name="ShiftID" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Break" Relationship="Self.FK_BreakShift_Break" FromRole="BreakShift" ToRole="Break" />
+    <NavigationProperty Name="Shift" Relationship="Self.FK_BreakShift_Shift" FromRole="BreakShift" ToRole="Shift" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" />
+    <Property Name="StateID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="State" Relationship="Self.FK_City_State" FromRole="City" ToRole="State" />
+  </EntityType>
+  <EntityType Name="CostCenter">
+    <Key>
+      <PropertyRef Name="CostCenterID" />
+    </Key>
+    <Property Name="CostCenterID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Signing" Relationship="Self.FK_Signing_CostCenter" FromRole="CostCenter" ToRole="Signing" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="State" Relationship="Self.FK_State_Country" FromRole="Country" ToRole="State" />
+  </EntityType>
+  <EntityType Name="DayDetails">
+    <Key>
+      <PropertyRef Name="DayDetailsID" />
+    </Key>
+    <Property Name="DayDetailsID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SortIndex" Type="Int32" Nullable="false" />
+    <Property Name="CheckIn" Type="DateTime" Precision="3" />
+    <Property Name="LunchIn" Type="DateTime" Precision="3" />
+    <Property Name="LunchOut" Type="DateTime" Precision="3" />
+    <Property Name="BreakIn" Type="DateTime" Precision="3" />
+    <Property Name="BreakOut" Type="DateTime" Precision="3" />
+    <Property Name="CheckOut" Type="DateTime" Precision="3" />
+    <Property Name="Hours" Type="DateTime" Precision="3" />
+    <Property Name="Worked" Type="DateTime" Precision="3" />
+    <Property Name="RoundedIn" Type="DateTime" Precision="3" />
+    <Property Name="RoundedOut" Type="DateTime" Precision="3" />
+    <Property Name="RoundWorked" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="ShiftID" Type="Int32" />
+    <Property Name="WorkCodeID" Type="Int32" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_DayDetails_Employee" FromRole="DayDetails" ToRole="Employee" />
+    <NavigationProperty Name="Shift" Relationship="Self.FK_DayDetails_Shift" FromRole="DayDetails" ToRole="Shift" />
+    <NavigationProperty Name="WorkCode" Relationship="Self.FK_DayDetails_WorkCode" FromRole="DayDetails" ToRole="WorkCode" />
+  </EntityType>
+  <EntityType Name="DaySummary">
+    <Key>
+      <PropertyRef Name="DaySummaryID" />
+    </Key>
+    <Property Name="DaySummaryID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PcResults" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="ShiftID" Type="Int32" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_DaySummary_Employee" FromRole="DaySummary" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="HolidayCompany">
+    <Key>
+      <PropertyRef Name="HolidayCompanyID" />
+    </Key>
+    <Property Name="HolidayCompanyID" Type="Int32" Nullable="false" />
+    <Property Name="HolidayDetailsID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="Disable" Type="Boolean" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_HolidayCompany_Company" FromRole="HolidayCompany" ToRole="Company" />
+    <NavigationProperty Name="HolidayDetails" Relationship="Self.FK_HolidayCompany_HolidayDetails" FromRole="HolidayCompany" ToRole="HolidayDetails" />
+  </EntityType>
+  <EntityType Name="HolidayDepartment">
+    <Key>
+      <PropertyRef Name="HolidayDepartmentID" />
+    </Key>
+    <Property Name="HolidayDepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="HolidayDetailsID" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentID" Type="Int32" />
+    <Property Name="Disable" Type="Boolean" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_HolidayDepartment_Department" FromRole="HolidayDepartment" ToRole="Department" />
+    <NavigationProperty Name="HolidayDetails" Relationship="Self.FK_HolidayDepartment_HolidayDetails" FromRole="HolidayDepartment" ToRole="HolidayDetails" />
+  </EntityType>
+  <EntityType Name="HolidayDetails">
+    <Key>
+      <PropertyRef Name="HolidayDetailsID" />
+    </Key>
+    <Property Name="HolidayDetailsID" Type="Int32" Nullable="false" />
+    <Property Name="HolidayTypeID" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hours" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="Rate" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="CountType" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HolidayCompany" Relationship="Self.FK_HolidayCompany_HolidayDetails" FromRole="HolidayDetails" ToRole="HolidayCompany" />
+    <NavigationProperty Name="HolidayDepartment" Relationship="Self.FK_HolidayDepartment_HolidayDetails" FromRole="HolidayDetails" ToRole="HolidayDepartment" />
+    <NavigationProperty Name="HolidayType" Relationship="Self.FK_HolidayDetails_HolidayType" FromRole="HolidayDetails" ToRole="HolidayType" />
+    <NavigationProperty Name="HolidayEmployee" Relationship="Self.FK_HolidayEmployee_HolidayDetails" FromRole="HolidayDetails" ToRole="HolidayEmployee" />
+  </EntityType>
+  <EntityType Name="HolidayEmployee">
+    <Key>
+      <PropertyRef Name="HolidayEmployeeID" />
+    </Key>
+    <Property Name="HolidayEmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="HolidayDetailsID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Disable" Type="Boolean" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HolidayDetails" Relationship="Self.FK_HolidayEmployee_HolidayDetails" FromRole="HolidayEmployee" ToRole="HolidayDetails" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_HolidayEmployee_Employee" FromRole="HolidayEmployee" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="HolidayType">
+    <Key>
+      <PropertyRef Name="HolidayTypeID" />
+    </Key>
+    <Property Name="HolidayTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="Desc" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="HourType" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="Level" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HolidayDetails" Relationship="Self.FK_HolidayDetails_HolidayType" FromRole="HolidayType" ToRole="HolidayDetails" />
+  </EntityType>
+  <EntityType Name="ManualDialing">
+    <Key>
+      <PropertyRef Name="ManualDialingID" />
+    </Key>
+    <Property Name="ManualDialingID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Reason" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="EditedPunchID" Type="Int32" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_ManualDialing_Employee" FromRole="ManualDialing" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Parameter">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+    </Key>
+    <Property Name="ParameterID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Integer" Type="Int32" />
+    <Property Name="Numeric" Type="Double" />
+    <Property Name="Chain" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Logical" Type="Boolean" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Permision">
+    <Key>
+      <PropertyRef Name="PermisionID" />
+    </Key>
+    <Property Name="PermisionID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PermisionTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Observation" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Permision_Employee" FromRole="Permision" ToRole="Employee" />
+    <NavigationProperty Name="PermisionType" Relationship="Self.FK_Permision_PermisionType" FromRole="Permision" ToRole="PermisionType" />
+  </EntityType>
+  <EntityType Name="PermisionType">
+    <Key>
+      <PropertyRef Name="PermisionTypeID" />
+    </Key>
+    <Property Name="PermisionTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Permision" Relationship="Self.FK_Permision_PermisionType" FromRole="PermisionType" ToRole="Permision" />
+  </EntityType>
+  <EntityType Name="Punches">
+    <Key>
+      <PropertyRef Name="PunchesID" />
+    </Key>
+    <Property Name="PunchesID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="PunchTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="WorkCodeID" Type="Int32" Nullable="false" />
+    <Property Name="WorkStateID" Type="Int32" Nullable="false" />
+    <Property Name="TerminalID" Type="Int32" />
+    <Property Name="PunchTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Operator" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="OperatorReason" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OperatorTime" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PunchType" Relationship="Self.FK_Punches_PunchType" FromRole="Punches" ToRole="PunchType" />
+    <NavigationProperty Name="Terminal" Relationship="Self.FK_Punches_Terminal" FromRole="Punches" ToRole="Terminal" />
+    <NavigationProperty Name="WorkCode" Relationship="Self.FK_Punches_WorkCode" FromRole="Punches" ToRole="WorkCode" />
+  </EntityType>
+  <EntityType Name="PunchesLocked">
+    <Key>
+      <PropertyRef Name="PunchesLockedID" />
+    </Key>
+    <Property Name="PunchesLockedID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="PunchTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="WorkCodeID" Type="Int32" Nullable="false" />
+    <Property Name="WorkStateID" Type="Int32" Nullable="false" />
+    <Property Name="TerminalID" Type="Int32" />
+    <Property Name="PunchTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Operator" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="OperatorReason" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OperatorTime" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PunchType">
+    <Key>
+      <PropertyRef Name="PunchTypeID" />
+    </Key>
+    <Property Name="PunchTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Punches" Relationship="Self.FK_Punches_PunchType" FromRole="PunchType" ToRole="Punches" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="ScheduleID" />
+    </Key>
+    <Property Name="ScheduleID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="CycleAvailable" Type="Boolean" Nullable="false" />
+    <Property Name="IsPublic" Type="Boolean" />
+    <Property Name="CycleIncludeWeekend" Type="Boolean" />
+    <Property Name="CycleIncludeHoliday" Type="Boolean" />
+    <Property Name="CycleType" Type="Int32" />
+    <Property Name="CycleParameter" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Department_Schedule" FromRole="Schedule" ToRole="Department" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Schedule" FromRole="Schedule" ToRole="Employee" />
+    <NavigationProperty Name="ScheduleDetails" Relationship="Self.FK_ScheduleDetails_Schedule" FromRole="Schedule" ToRole="ScheduleDetails" />
+  </EntityType>
+  <EntityType Name="ScheduleDetails">
+    <Key>
+      <PropertyRef Name="ScheduleDetailsID" />
+    </Key>
+    <Property Name="ScheduleDetailsID" Type="Int32" Nullable="false" />
+    <Property Name="ScheduleID" Type="Int32" Nullable="false" />
+    <Property Name="ShiftID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Available" Type="Int32" />
+    <Property Name="Shift" Type="Int32" />
+    <Property Name="DetailType" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Schedule" Relationship="Self.FK_ScheduleDetails_Schedule" FromRole="ScheduleDetails" ToRole="Schedule" />
+    <NavigationProperty Name="Shift1" Relationship="Self.FK_ScheduleDetails_Shift" FromRole="ScheduleDetails" ToRole="Shift" />
+  </EntityType>
+  <EntityType Name="Shift">
+    <Key>
+      <PropertyRef Name="ShiftID" />
+    </Key>
+    <Property Name="ShiftID" Type="Int32" Nullable="false" />
+    <Property Name="ShiftTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Flexible" Type="Boolean" />
+    <Property Name="Name" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="Start" Type="DateTime" Precision="3" />
+    <Property Name="End" Type="DateTime" Precision="3" />
+    <Property Name="BeforeStart" Type="Int32" />
+    <Property Name="AfterEnd" Type="Int32" />
+    <Property Name="BeforeStart2" Type="Int32" />
+    <Property Name="AfterEnd2" Type="Int32" />
+    <Property Name="Late" Type="Boolean" />
+    <Property Name="LateCome" Type="Int32" />
+    <Property Name="Early" Type="Boolean" />
+    <Property Name="EarlyOut" Type="Int32" />
+    <Property Name="EarlyCome" Type="Int32" />
+    <Property Name="LateOut" Type="Int32" />
+    <Property Name="ShiftRound" Type="Boolean" />
+    <Property Name="CheckInRoundValue" Type="Int32" />
+    <Property Name="CheckOutRoundValue" Type="Int32" />
+    <Property Name="CheckInRoundDown" Type="Int32" />
+    <Property Name="CheckOutRoundDown" Type="Int32" />
+    <Property Name="Absent" Type="Int32" />
+    <Property Name="Color" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="AllowBefore" Type="Boolean" />
+    <Property Name="AllowAfter" Type="Boolean" />
+    <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IsPublic" Type="Boolean" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="RangeStartIni" Type="DateTime" Precision="3" />
+    <Property Name="RangeStartFin" Type="DateTime" Precision="3" />
+    <Property Name="RangeEndIni" Type="DateTime" Precision="3" />
+    <Property Name="RangeEndFin" Type="DateTime" Precision="3" />
+    <Property Name="Monday" Type="Boolean" />
+    <Property Name="Tuesday" Type="Boolean" />
+    <Property Name="Wednesday" Type="Boolean" />
+    <Property Name="Thursday" Type="Boolean" />
+    <Property Name="Friday" Type="Boolean" />
+    <Property Name="Saturday" Type="Boolean" />
+    <Property Name="Sunday" Type="Boolean" />
+    <NavigationProperty Name="BreakShift" Relationship="Self.FK_BreakShift_Shift" FromRole="Shift" ToRole="BreakShift" />
+    <NavigationProperty Name="DayDetails" Relationship="Self.FK_DayDetails_Shift" FromRole="Shift" ToRole="DayDetails" />
+    <NavigationProperty Name="ScheduleDetails" Relationship="Self.FK_ScheduleDetails_Shift" FromRole="Shift" ToRole="ScheduleDetails" />
+    <NavigationProperty Name="ShiftType" Relationship="Self.FK_Shift_ShiftType" FromRole="Shift" ToRole="ShiftType" />
+    <NavigationProperty Name="ShiftRoundrule" Relationship="Self.FK_ShiftRoundrule_Shift" FromRole="Shift" ToRole="ShiftRoundrule" />
+  </EntityType>
+  <EntityType Name="ShiftRoundrule">
+    <Key>
+      <PropertyRef Name="ShiftRoundruleID" />
+    </Key>
+    <Property Name="ShiftRoundruleID" Type="Int32" Nullable="false" />
+    <Property Name="ShiftID" Type="Int32" Nullable="false" />
+    <Property Name="TimeFrom" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TimeTo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Roundtime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Shift" Relationship="Self.FK_ShiftRoundrule_Shift" FromRole="ShiftRoundrule" ToRole="Shift" />
+  </EntityType>
+  <EntityType Name="ShiftType">
+    <Key>
+      <PropertyRef Name="ShiftTypeID" />
+    </Key>
+    <Property Name="ShiftTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Shift" Relationship="Self.FK_Shift_ShiftType" FromRole="ShiftType" ToRole="Shift" />
+  </EntityType>
+  <EntityType Name="Signing">
+    <Key>
+      <PropertyRef Name="SigningID" />
+    </Key>
+    <Property Name="SigningID" Type="Int32" Nullable="false" />
+    <Property Name="CostCenterID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="End" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Observation" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CostCenter" Relationship="Self.FK_Signing_CostCenter" FromRole="Signing" ToRole="CostCenter" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Signing_Employee" FromRole="Signing" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="Self.FK_City_State" FromRole="State" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_State_Country" FromRole="State" ToRole="Country" />
+  </EntityType>
+  <EntityType Name="Terminal">
+    <Key>
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="TerminalID" Type="Int32" Nullable="false" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="ConnectType" Type="Int32" Nullable="false" />
+    <Property Name="ConnectPwd" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="DomainName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="TcpIp" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Port" Type="Int32" />
+    <Property Name="Serial" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Baudrate" Type="Int32" />
+    <Property Name="Type" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Users" Type="Int32" />
+    <Property Name="Fingerprints" Type="Int32" />
+    <Property Name="Punches" Type="Int32" />
+    <Property Name="Zem" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="Kind" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Faces" Type="Int32" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Punches1" Relationship="Self.FK_Punches_Terminal" FromRole="Terminal" ToRole="Punches" />
+    <NavigationProperty Name="TerminalEvents" Relationship="Self.FK_TerminalEvents_Terminal" FromRole="Terminal" ToRole="TerminalEvents" />
+    <NavigationProperty Name="TerminalParameter" Relationship="Self.FK_TerminalParameter_Terminal" FromRole="Terminal" ToRole="TerminalParameter" />
+  </EntityType>
+  <EntityType Name="TerminalEvents">
+    <Key>
+      <PropertyRef Name="TerminalEventsID" />
+    </Key>
+    <Property Name="TerminalEventsID" Type="Int32" Nullable="false" />
+    <Property Name="TerminalID" Type="Int32" Nullable="false" />
+    <Property Name="OccurTime" Type="DateTime" Precision="3" />
+    <Property Name="ActionName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="ContentData" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="VerifyMode" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Terminal" Relationship="Self.FK_TerminalEvents_Terminal" FromRole="TerminalEvents" ToRole="Terminal" />
+  </EntityType>
+  <EntityType Name="TerminalParameter">
+    <Key>
+      <PropertyRef Name="TerminalParameterID" />
+    </Key>
+    <Property Name="TerminalParameterID" Type="Int32" Nullable="false" />
+    <Property Name="TerminalID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Terminal" Relationship="Self.FK_TerminalParameter_Terminal" FromRole="TerminalParameter" ToRole="Terminal" />
+  </EntityType>
+  <EntityType Name="WorkCode">
+    <Key>
+      <PropertyRef Name="WorkCodeID" />
+    </Key>
+    <Property Name="WorkCodeID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DayDetails" Relationship="Self.FK_DayDetails_WorkCode" FromRole="WorkCode" ToRole="DayDetails" />
+    <NavigationProperty Name="Punches" Relationship="Self.FK_Punches_WorkCode" FromRole="WorkCode" ToRole="Punches" />
+  </EntityType>
+  <EntityType Name="WorkState">
+    <Key>
+      <PropertyRef Name="WorkStateID" />
+    </Key>
+    <Property Name="WorkStateID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Sequential">
+    <Key>
+      <PropertyRef Name="IdSequential" />
+    </Key>
+    <Property Name="IdSequential" Type="Int32" Nullable="false" />
+    <Property Name="TableName" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sequence" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateFormat" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TimeFormat" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OperationMode" Type="Int32" />
+    <Property Name="MainAddress" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AlternateAddress" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="PostalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Fax" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="WebSite" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HolidayCompany" Relationship="Self.FK_HolidayCompany_Company" FromRole="Company" ToRole="HolidayCompany" />
+    <NavigationProperty Name="Company1" Relationship="Self.FK_Company_Company" FromRole="Company" ToRole="Company1" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Department_Company" FromRole="Company" ToRole="Department" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="ScheduleID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ParentCode" Type="Int32" Nullable="false" />
+    <Property Name="OperationMode" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HolidayDepartment" Relationship="Self.FK_HolidayDepartment_Department" FromRole="Department" ToRole="HolidayDepartment" />
+    <NavigationProperty Name="Schedule" Relationship="Self.FK_Department_Schedule" FromRole="Department" ToRole="Schedule" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_Department_Company" FromRole="Department" ToRole="Company" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="ScheduleID" Type="Int32" />
+    <Property Name="Pin" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Salary" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="HireDate" Type="DateTime" Precision="3" />
+    <Property Name="MainAddress" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AlternateAddress" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="FireDate" Type="DateTime" Precision="3" />
+    <Property Name="FireReason" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="MainEmergencyPhone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="AlternateEmergencyPhone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="EmergencyName" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="EmergencyAddress" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="CardNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="PostalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Fax" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="HourlyRate" Type="Decimal" Precision="19" Scale="5" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="BirthDay" Type="DateTime" Precision="3" />
+    <Property Name="OperationMode" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateIns" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationIns" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditUserUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AuditDateUpd" Type="DateTime" Precision="3" />
+    <Property Name="AuditStationUpd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="IdentificationNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="EarnOvertime" Type="Boolean" />
+    <NavigationProperty Name="DayDetails" Relationship="Self.FK_DayDetails_Employee" FromRole="Employee" ToRole="DayDetails" />
+    <NavigationProperty Name="DaySummary" Relationship="Self.FK_DaySummary_Employee" FromRole="Employee" ToRole="DaySummary" />
+    <NavigationProperty Name="HolidayEmployee" Relationship="Self.FK_HolidayEmployee_Employee" FromRole="Employee" ToRole="HolidayEmployee" />
+    <NavigationProperty Name="ManualDialing" Relationship="Self.FK_ManualDialing_Employee" FromRole="Employee" ToRole="ManualDialing" />
+    <NavigationProperty Name="Permision" Relationship="Self.FK_Permision_Employee" FromRole="Employee" ToRole="Permision" />
+    <NavigationProperty Name="Schedule" Relationship="Self.FK_Employee_Schedule" FromRole="Employee" ToRole="Schedule" />
+    <NavigationProperty Name="Signing" Relationship="Self.FK_Signing_Employee" FromRole="Employee" ToRole="Signing" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
+  </EntityType>
+  <EntityType Name="Action">
+    <Key>
+      <PropertyRef Name="ActionID" />
+    </Key>
+    <Property Name="ActionID" Type="Int32" Nullable="false" />
+    <Property Name="Mnemonic" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Operation" Relationship="Self.FK_Operation_Action_ActionID" FromRole="Action" ToRole="Operation" />
+    <NavigationProperty Name="Permision1" Relationship="Self.FK_Permision_Action" FromRole="Action" ToRole="Permision1" />
+  </EntityType>
+  <EntityType Name="Company1">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Credential" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_Company_Company" FromRole="Company1" ToRole="Company" />
+    <NavigationProperty Name="CompanyModule" Relationship="Self.FK_CompanyModule_Company_CompanyID" FromRole="Company1" ToRole="CompanyModule" />
+    <NavigationProperty Name="UserCompany" Relationship="Self.FK_UserCompany_Company_CompanyID" FromRole="Company1" ToRole="UserCompany" />
+  </EntityType>
+  <EntityType Name="CompanyModule">
+    <Key>
+      <PropertyRef Name="CompanyModuleID" />
+    </Key>
+    <Property Name="CompanyModuleID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Company1" Relationship="Self.FK_CompanyModule_Company_CompanyID" FromRole="CompanyModule" ToRole="Company1" />
+    <NavigationProperty Name="Module" Relationship="Self.FK_CompanyModule_Module_ModuleID" FromRole="CompanyModule" ToRole="Module" />
+  </EntityType>
+  <EntityType Name="Component">
+    <Key>
+      <PropertyRef Name="ComponentID" />
+    </Key>
+    <Property Name="ComponentID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Container" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Option" Relationship="Self.FK_Option_Component" FromRole="Component" ToRole="Option" />
+  </EntityType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="ModuleID" />
+    </Key>
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="Order" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Acronym" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CompanyModule" Relationship="Self.FK_CompanyModule_Module_ModuleID" FromRole="Module" ToRole="CompanyModule" />
+    <NavigationProperty Name="ModuleOption" Relationship="Self.FK_ModuleOption_Module_ModuleID" FromRole="Module" ToRole="ModuleOption" />
+  </EntityType>
+  <EntityType Name="ModuleOption">
+    <Key>
+      <PropertyRef Name="ModuleOptionID" />
+    </Key>
+    <Property Name="ModuleOptionID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="OptionID" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Module" Relationship="Self.FK_ModuleOption_Module_ModuleID" FromRole="ModuleOption" ToRole="Module" />
+    <NavigationProperty Name="Option" Relationship="Self.FK_ModuleOption_Option_OptionID" FromRole="ModuleOption" ToRole="Option" />
+  </EntityType>
+  <EntityType Name="Operation">
+    <Key>
+      <PropertyRef Name="OperationID" />
+    </Key>
+    <Property Name="OperationID" Type="Int32" Nullable="false" />
+    <Property Name="ProcedureID" Type="Int32" Nullable="false" />
+    <Property Name="ActionID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Action" Relationship="Self.FK_Operation_Action_ActionID" FromRole="Operation" ToRole="Action" />
+    <NavigationProperty Name="Procedure" Relationship="Self.FK_Operation_Procedure_ProcedureID" FromRole="Operation" ToRole="Procedure" />
+    <NavigationProperty Name="OptionOperation" Relationship="Self.FK_OptionOperation_Operation_OperationID" FromRole="Operation" ToRole="OptionOperation" />
+  </EntityType>
+  <EntityType Name="Option">
+    <Key>
+      <PropertyRef Name="OptionID" />
+    </Key>
+    <Property Name="OptionID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CodeTop" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Activation" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ComponentID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Component" Relationship="Self.FK_Option_Component" FromRole="Option" ToRole="Component" />
+    <NavigationProperty Name="ModuleOption" Relationship="Self.FK_ModuleOption_Option_OptionID" FromRole="Option" ToRole="ModuleOption" />
+    <NavigationProperty Name="OptionOperation" Relationship="Self.FK_OptionOperation_Option_OptionID" FromRole="Option" ToRole="OptionOperation" />
+    <NavigationProperty Name="RoleOption" Relationship="Self.FK_RoleOption_Option_OptionID" FromRole="Option" ToRole="RoleOption" />
+  </EntityType>
+  <EntityType Name="OptionOperation">
+    <Key>
+      <PropertyRef Name="OptionOperationID" />
+    </Key>
+    <Property Name="OptionOperationID" Type="Int32" Nullable="false" />
+    <Property Name="OptionID" Type="Int32" Nullable="false" />
+    <Property Name="OperationID" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Operation" Relationship="Self.FK_OptionOperation_Operation_OperationID" FromRole="OptionOperation" ToRole="Operation" />
+    <NavigationProperty Name="Option" Relationship="Self.FK_OptionOperation_Option_OptionID" FromRole="OptionOperation" ToRole="Option" />
+  </EntityType>
+  <EntityType Name="Permision1">
+    <Key>
+      <PropertyRef Name="UserActionID" />
+    </Key>
+    <Property Name="UserActionID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ActionID" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Action" Relationship="Self.FK_Permision_Action" FromRole="Permision1" ToRole="Action" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserOperation_User_UserID" FromRole="Permision1" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Procedure">
+    <Key>
+      <PropertyRef Name="ProcedureID" />
+    </Key>
+    <Property Name="ProcedureID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Operation" Relationship="Self.FK_Operation_Procedure_ProcedureID" FromRole="Procedure" ToRole="Operation" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="RoleOption" Relationship="Self.FK_RoleOption_Role_RoleID" FromRole="Role" ToRole="RoleOption" />
+    <NavigationProperty Name="UserRole" Relationship="Self.FK_UserRole_Role_RoleID" FromRole="Role" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="RoleOption">
+    <Key>
+      <PropertyRef Name="RoleOptionID" />
+    </Key>
+    <Property Name="RoleOptionID" Type="Int32" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="OptionID" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Option" Relationship="Self.FK_RoleOption_Option_OptionID" FromRole="RoleOption" ToRole="Option" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_RoleOption_Role_RoleID" FromRole="RoleOption" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Key" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Identification" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastChangePassword" Type="DateTime" Precision="3" />
+    <Property Name="DaysValidity" Type="Int32" />
+    <Property Name="PasswordExpires" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="StreetAddress" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="CellPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="AddressPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Permision1" Relationship="Self.FK_UserOperation_User_UserID" FromRole="User" ToRole="Permision1" />
+    <NavigationProperty Name="UserCompany" Relationship="Self.FK_UserCompany_User_User" FromRole="User" ToRole="UserCompany" />
+    <NavigationProperty Name="UserRole" Relationship="Self.FK_UserRole_User_UserID" FromRole="User" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="UserCompany">
+    <Key>
+      <PropertyRef Name="UserCompanyID" />
+    </Key>
+    <Property Name="UserCompanyID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Company1" Relationship="Self.FK_UserCompany_Company_CompanyID" FromRole="UserCompany" ToRole="Company1" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserCompany_User_User" FromRole="UserCompany" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserRoleID" />
+    </Key>
+    <Property Name="UserRoleID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role_RoleID" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserRole_User_UserID" FromRole="UserRole" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_BreakShift_Break">
+    <End Role="Break" Type="Self.Break" Multiplicity="0..1" />
+    <End Role="BreakShift" Type="Self.BreakShift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Break">
+        <PropertyRef Name="BreakID" />
+      </Principal>
+      <Dependent Role="BreakShift">
+        <PropertyRef Name="BreakID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BreakShift_Shift">
+    <End Role="Shift" Type="Self.Shift" Multiplicity="0..1" />
+    <End Role="BreakShift" Type="Self.BreakShift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="ShiftID" />
+      </Principal>
+      <Dependent Role="BreakShift">
+        <PropertyRef Name="ShiftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_State">
+    <End Role="State" Type="Self.State" Multiplicity="1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Signing_CostCenter">
+    <End Role="CostCenter" Type="Self.CostCenter" Multiplicity="1" />
+    <End Role="Signing" Type="Self.Signing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CostCenter">
+        <PropertyRef Name="CostCenterID" />
+      </Principal>
+      <Dependent Role="Signing">
+        <PropertyRef Name="CostCenterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_State_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DayDetails_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="DayDetails" Type="Self.DayDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="DayDetails">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DayDetails_Shift">
+    <End Role="Shift" Type="Self.Shift" Multiplicity="0..1" />
+    <End Role="DayDetails" Type="Self.DayDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="ShiftID" />
+      </Principal>
+      <Dependent Role="DayDetails">
+        <PropertyRef Name="ShiftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DayDetails_WorkCode">
+    <End Role="WorkCode" Type="Self.WorkCode" Multiplicity="0..1" />
+    <End Role="DayDetails" Type="Self.DayDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkCode">
+        <PropertyRef Name="WorkCodeID" />
+      </Principal>
+      <Dependent Role="DayDetails">
+        <PropertyRef Name="WorkCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DaySummary_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="DaySummary" Type="Self.DaySummary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="DaySummary">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HolidayCompany_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="HolidayCompany" Type="Self.HolidayCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="HolidayCompany">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HolidayCompany_HolidayDetails">
+    <End Role="HolidayDetails" Type="Self.HolidayDetails" Multiplicity="1" />
+    <End Role="HolidayCompany" Type="Self.HolidayCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HolidayDetails">
+        <PropertyRef Name="HolidayDetailsID" />
+      </Principal>
+      <Dependent Role="HolidayCompany">
+        <PropertyRef Name="HolidayDetailsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HolidayDepartment_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="HolidayDepartment" Type="Self.HolidayDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="HolidayDepartment">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HolidayDepartment_HolidayDetails">
+    <End Role="HolidayDetails" Type="Self.HolidayDetails" Multiplicity="1" />
+    <End Role="HolidayDepartment" Type="Self.HolidayDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HolidayDetails">
+        <PropertyRef Name="HolidayDetailsID" />
+      </Principal>
+      <Dependent Role="HolidayDepartment">
+        <PropertyRef Name="HolidayDetailsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HolidayDetails_HolidayType">
+    <End Role="HolidayType" Type="Self.HolidayType" Multiplicity="1" />
+    <End Role="HolidayDetails" Type="Self.HolidayDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HolidayType">
+        <PropertyRef Name="HolidayTypeID" />
+      </Principal>
+      <Dependent Role="HolidayDetails">
+        <PropertyRef Name="HolidayTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HolidayEmployee_HolidayDetails">
+    <End Role="HolidayDetails" Type="Self.HolidayDetails" Multiplicity="1" />
+    <End Role="HolidayEmployee" Type="Self.HolidayEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HolidayDetails">
+        <PropertyRef Name="HolidayDetailsID" />
+      </Principal>
+      <Dependent Role="HolidayEmployee">
+        <PropertyRef Name="HolidayDetailsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HolidayEmployee_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="HolidayEmployee" Type="Self.HolidayEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="HolidayEmployee">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ManualDialing_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="ManualDialing" Type="Self.ManualDialing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="ManualDialing">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permision_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Permision" Type="Self.Permision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Permision">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permision_PermisionType">
+    <End Role="PermisionType" Type="Self.PermisionType" Multiplicity="1" />
+    <End Role="Permision" Type="Self.Permision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermisionType">
+        <PropertyRef Name="PermisionTypeID" />
+      </Principal>
+      <Dependent Role="Permision">
+        <PropertyRef Name="PermisionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Punches_PunchType">
+    <End Role="PunchType" Type="Self.PunchType" Multiplicity="1" />
+    <End Role="Punches" Type="Self.Punches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PunchType">
+        <PropertyRef Name="PunchTypeID" />
+      </Principal>
+      <Dependent Role="Punches">
+        <PropertyRef Name="PunchTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Punches_Terminal">
+    <End Role="Terminal" Type="Self.Terminal" Multiplicity="0..1" />
+    <End Role="Punches" Type="Self.Punches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terminal">
+        <PropertyRef Name="TerminalID" />
+      </Principal>
+      <Dependent Role="Punches">
+        <PropertyRef Name="TerminalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Punches_WorkCode">
+    <End Role="WorkCode" Type="Self.WorkCode" Multiplicity="1" />
+    <End Role="Punches" Type="Self.Punches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkCode">
+        <PropertyRef Name="WorkCodeID" />
+      </Principal>
+      <Dependent Role="Punches">
+        <PropertyRef Name="WorkCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Department_Schedule">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="ScheduleID" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="ScheduleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Schedule">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="ScheduleID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="ScheduleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleDetails_Schedule">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+    <End Role="ScheduleDetails" Type="Self.ScheduleDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="ScheduleID" />
+      </Principal>
+      <Dependent Role="ScheduleDetails">
+        <PropertyRef Name="ScheduleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleDetails_Shift">
+    <End Role="Shift" Type="Self.Shift" Multiplicity="0..1" />
+    <End Role="ScheduleDetails" Type="Self.ScheduleDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="ShiftID" />
+      </Principal>
+      <Dependent Role="ScheduleDetails">
+        <PropertyRef Name="ShiftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shift_ShiftType">
+    <End Role="ShiftType" Type="Self.ShiftType" Multiplicity="1" />
+    <End Role="Shift" Type="Self.Shift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShiftType">
+        <PropertyRef Name="ShiftTypeID" />
+      </Principal>
+      <Dependent Role="Shift">
+        <PropertyRef Name="ShiftTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShiftRoundrule_Shift">
+    <End Role="Shift" Type="Self.Shift" Multiplicity="1" />
+    <End Role="ShiftRoundrule" Type="Self.ShiftRoundrule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="ShiftID" />
+      </Principal>
+      <Dependent Role="ShiftRoundrule">
+        <PropertyRef Name="ShiftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Signing_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Signing" Type="Self.Signing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Signing">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TerminalEvents_Terminal">
+    <End Role="Terminal" Type="Self.Terminal" Multiplicity="1" />
+    <End Role="TerminalEvents" Type="Self.TerminalEvents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terminal">
+        <PropertyRef Name="TerminalID" />
+      </Principal>
+      <Dependent Role="TerminalEvents">
+        <PropertyRef Name="TerminalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TerminalParameter_Terminal">
+    <End Role="Terminal" Type="Self.Terminal" Multiplicity="1" />
+    <End Role="TerminalParameter" Type="Self.TerminalParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terminal">
+        <PropertyRef Name="TerminalID" />
+      </Principal>
+      <Dependent Role="TerminalParameter">
+        <PropertyRef Name="TerminalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Company">
+    <End Role="Company1" Type="Self.Company1" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Company1">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Department_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operation_Action_ActionID">
+    <End Role="Action" Type="Self.Action" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Action">
+        <PropertyRef Name="ActionID" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="ActionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permision_Action">
+    <End Role="Action" Type="Self.Action" Multiplicity="1" />
+    <End Role="Permision1" Type="Self.Permision1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Action">
+        <PropertyRef Name="ActionID" />
+      </Principal>
+      <Dependent Role="Permision1">
+        <PropertyRef Name="ActionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyModule_Company_CompanyID">
+    <End Role="Company1" Type="Self.Company1" Multiplicity="1" />
+    <End Role="CompanyModule" Type="Self.CompanyModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company1">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="CompanyModule">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCompany_Company_CompanyID">
+    <End Role="Company1" Type="Self.Company1" Multiplicity="1" />
+    <End Role="UserCompany" Type="Self.UserCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company1">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="UserCompany">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyModule_Module_ModuleID">
+    <End Role="Module" Type="Self.Module" Multiplicity="1" />
+    <End Role="CompanyModule" Type="Self.CompanyModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="ModuleID" />
+      </Principal>
+      <Dependent Role="CompanyModule">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Option_Component">
+    <End Role="Component" Type="Self.Component" Multiplicity="0..1" />
+    <End Role="Option" Type="Self.Option" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Component">
+        <PropertyRef Name="ComponentID" />
+      </Principal>
+      <Dependent Role="Option">
+        <PropertyRef Name="ComponentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ModuleOption_Module_ModuleID">
+    <End Role="Module" Type="Self.Module" Multiplicity="1" />
+    <End Role="ModuleOption" Type="Self.ModuleOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="ModuleID" />
+      </Principal>
+      <Dependent Role="ModuleOption">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ModuleOption_Option_OptionID">
+    <End Role="Option" Type="Self.Option" Multiplicity="1" />
+    <End Role="ModuleOption" Type="Self.ModuleOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Option">
+        <PropertyRef Name="OptionID" />
+      </Principal>
+      <Dependent Role="ModuleOption">
+        <PropertyRef Name="OptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operation_Procedure_ProcedureID">
+    <End Role="Procedure" Type="Self.Procedure" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Procedure">
+        <PropertyRef Name="ProcedureID" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="ProcedureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OptionOperation_Operation_OperationID">
+    <End Role="Operation" Type="Self.Operation" Multiplicity="1" />
+    <End Role="OptionOperation" Type="Self.OptionOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="OperationID" />
+      </Principal>
+      <Dependent Role="OptionOperation">
+        <PropertyRef Name="OperationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OptionOperation_Option_OptionID">
+    <End Role="Option" Type="Self.Option" Multiplicity="1" />
+    <End Role="OptionOperation" Type="Self.OptionOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Option">
+        <PropertyRef Name="OptionID" />
+      </Principal>
+      <Dependent Role="OptionOperation">
+        <PropertyRef Name="OptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleOption_Option_OptionID">
+    <End Role="Option" Type="Self.Option" Multiplicity="1" />
+    <End Role="RoleOption" Type="Self.RoleOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Option">
+        <PropertyRef Name="OptionID" />
+      </Principal>
+      <Dependent Role="RoleOption">
+        <PropertyRef Name="OptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserOperation_User_UserID">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Permision1" Type="Self.Permision1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Permision1">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleOption_Role_RoleID">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RoleOption" Type="Self.RoleOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="RoleOption">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_Role_RoleID">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCompany_User_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserCompany" Type="Self.UserCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserCompany">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_User_UserID">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RELOJBIOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Break" EntityType="Self.Break" />
+    <EntitySet Name="BreakShift" EntityType="Self.BreakShift" />
+    <EntitySet Name="City" EntityType="Self.City" />
+    <EntitySet Name="CostCenter" EntityType="Self.CostCenter" />
+    <EntitySet Name="Country" EntityType="Self.Country" />
+    <EntitySet Name="DayDetails" EntityType="Self.DayDetails" />
+    <EntitySet Name="DaySummary" EntityType="Self.DaySummary" />
+    <EntitySet Name="HolidayCompany" EntityType="Self.HolidayCompany" />
+    <EntitySet Name="HolidayDepartment" EntityType="Self.HolidayDepartment" />
+    <EntitySet Name="HolidayDetails" EntityType="Self.HolidayDetails" />
+    <EntitySet Name="HolidayEmployee" EntityType="Self.HolidayEmployee" />
+    <EntitySet Name="HolidayType" EntityType="Self.HolidayType" />
+    <EntitySet Name="ManualDialing" EntityType="Self.ManualDialing" />
+    <EntitySet Name="Parameter" EntityType="Self.Parameter" />
+    <EntitySet Name="Permision" EntityType="Self.Permision" />
+    <EntitySet Name="PermisionType" EntityType="Self.PermisionType" />
+    <EntitySet Name="Punches" EntityType="Self.Punches" />
+    <EntitySet Name="PunchesLocked" EntityType="Self.PunchesLocked" />
+    <EntitySet Name="PunchType" EntityType="Self.PunchType" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" />
+    <EntitySet Name="ScheduleDetails" EntityType="Self.ScheduleDetails" />
+    <EntitySet Name="Shift" EntityType="Self.Shift" />
+    <EntitySet Name="ShiftRoundrule" EntityType="Self.ShiftRoundrule" />
+    <EntitySet Name="ShiftType" EntityType="Self.ShiftType" />
+    <EntitySet Name="Signing" EntityType="Self.Signing" />
+    <EntitySet Name="State" EntityType="Self.State" />
+    <EntitySet Name="Terminal" EntityType="Self.Terminal" />
+    <EntitySet Name="TerminalEvents" EntityType="Self.TerminalEvents" />
+    <EntitySet Name="TerminalParameter" EntityType="Self.TerminalParameter" />
+    <EntitySet Name="WorkCode" EntityType="Self.WorkCode" />
+    <EntitySet Name="WorkState" EntityType="Self.WorkState" />
+    <EntitySet Name="Sequential" EntityType="Self.Sequential" />
+    <EntitySet Name="Company" EntityType="Self.Company" />
+    <EntitySet Name="Department" EntityType="Self.Department" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="Action" EntityType="Self.Action" />
+    <EntitySet Name="Company1" EntityType="Self.Company1" />
+    <EntitySet Name="CompanyModule" EntityType="Self.CompanyModule" />
+    <EntitySet Name="Component" EntityType="Self.Component" />
+    <EntitySet Name="Module" EntityType="Self.Module" />
+    <EntitySet Name="ModuleOption" EntityType="Self.ModuleOption" />
+    <EntitySet Name="Operation" EntityType="Self.Operation" />
+    <EntitySet Name="Option" EntityType="Self.Option" />
+    <EntitySet Name="OptionOperation" EntityType="Self.OptionOperation" />
+    <EntitySet Name="Permision1" EntityType="Self.Permision1" />
+    <EntitySet Name="Procedure" EntityType="Self.Procedure" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="RoleOption" EntityType="Self.RoleOption" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="UserCompany" EntityType="Self.UserCompany" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" />
+    <AssociationSet Name="FK_BreakShift_Break" Association="Self.FK_BreakShift_Break">
+      <End Role="Break" EntitySet="Break" />
+      <End Role="BreakShift" EntitySet="BreakShift" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BreakShift_Shift" Association="Self.FK_BreakShift_Shift">
+      <End Role="Shift" EntitySet="Shift" />
+      <End Role="BreakShift" EntitySet="BreakShift" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+      <End Role="State" EntitySet="State" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Signing_CostCenter" Association="Self.FK_Signing_CostCenter">
+      <End Role="CostCenter" EntitySet="CostCenter" />
+      <End Role="Signing" EntitySet="Signing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="State" EntitySet="State" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DayDetails_Employee" Association="Self.FK_DayDetails_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="DayDetails" EntitySet="DayDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DayDetails_Shift" Association="Self.FK_DayDetails_Shift">
+      <End Role="Shift" EntitySet="Shift" />
+      <End Role="DayDetails" EntitySet="DayDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DayDetails_WorkCode" Association="Self.FK_DayDetails_WorkCode">
+      <End Role="WorkCode" EntitySet="WorkCode" />
+      <End Role="DayDetails" EntitySet="DayDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DaySummary_Employee" Association="Self.FK_DaySummary_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="DaySummary" EntitySet="DaySummary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HolidayCompany_Company" Association="Self.FK_HolidayCompany_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="HolidayCompany" EntitySet="HolidayCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HolidayCompany_HolidayDetails" Association="Self.FK_HolidayCompany_HolidayDetails">
+      <End Role="HolidayDetails" EntitySet="HolidayDetails" />
+      <End Role="HolidayCompany" EntitySet="HolidayCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HolidayDepartment_Department" Association="Self.FK_HolidayDepartment_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="HolidayDepartment" EntitySet="HolidayDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HolidayDepartment_HolidayDetails" Association="Self.FK_HolidayDepartment_HolidayDetails">
+      <End Role="HolidayDetails" EntitySet="HolidayDetails" />
+      <End Role="HolidayDepartment" EntitySet="HolidayDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HolidayDetails_HolidayType" Association="Self.FK_HolidayDetails_HolidayType">
+      <End Role="HolidayType" EntitySet="HolidayType" />
+      <End Role="HolidayDetails" EntitySet="HolidayDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HolidayEmployee_HolidayDetails" Association="Self.FK_HolidayEmployee_HolidayDetails">
+      <End Role="HolidayDetails" EntitySet="HolidayDetails" />
+      <End Role="HolidayEmployee" EntitySet="HolidayEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HolidayEmployee_Employee" Association="Self.FK_HolidayEmployee_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HolidayEmployee" EntitySet="HolidayEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ManualDialing_Employee" Association="Self.FK_ManualDialing_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="ManualDialing" EntitySet="ManualDialing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permision_Employee" Association="Self.FK_Permision_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Permision" EntitySet="Permision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permision_PermisionType" Association="Self.FK_Permision_PermisionType">
+      <End Role="PermisionType" EntitySet="PermisionType" />
+      <End Role="Permision" EntitySet="Permision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Punches_PunchType" Association="Self.FK_Punches_PunchType">
+      <End Role="PunchType" EntitySet="PunchType" />
+      <End Role="Punches" EntitySet="Punches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Punches_Terminal" Association="Self.FK_Punches_Terminal">
+      <End Role="Terminal" EntitySet="Terminal" />
+      <End Role="Punches" EntitySet="Punches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Punches_WorkCode" Association="Self.FK_Punches_WorkCode">
+      <End Role="WorkCode" EntitySet="WorkCode" />
+      <End Role="Punches" EntitySet="Punches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Schedule" Association="Self.FK_Department_Schedule">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Schedule" Association="Self.FK_Employee_Schedule">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleDetails_Schedule" Association="Self.FK_ScheduleDetails_Schedule">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="ScheduleDetails" EntitySet="ScheduleDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleDetails_Shift" Association="Self.FK_ScheduleDetails_Shift">
+      <End Role="Shift" EntitySet="Shift" />
+      <End Role="ScheduleDetails" EntitySet="ScheduleDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shift_ShiftType" Association="Self.FK_Shift_ShiftType">
+      <End Role="ShiftType" EntitySet="ShiftType" />
+      <End Role="Shift" EntitySet="Shift" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShiftRoundrule_Shift" Association="Self.FK_ShiftRoundrule_Shift">
+      <End Role="Shift" EntitySet="Shift" />
+      <End Role="ShiftRoundrule" EntitySet="ShiftRoundrule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Signing_Employee" Association="Self.FK_Signing_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Signing" EntitySet="Signing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TerminalEvents_Terminal" Association="Self.FK_TerminalEvents_Terminal">
+      <End Role="Terminal" EntitySet="Terminal" />
+      <End Role="TerminalEvents" EntitySet="TerminalEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TerminalParameter_Terminal" Association="Self.FK_TerminalParameter_Terminal">
+      <End Role="Terminal" EntitySet="Terminal" />
+      <End Role="TerminalParameter" EntitySet="TerminalParameter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Company" Association="Self.FK_Company_Company">
+      <End Role="Company1" EntitySet="Company1" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Company" Association="Self.FK_Department_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operation_Action_ActionID" Association="Self.FK_Operation_Action_ActionID">
+      <End Role="Action" EntitySet="Action" />
+      <End Role="Operation" EntitySet="Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permision_Action" Association="Self.FK_Permision_Action">
+      <End Role="Action" EntitySet="Action" />
+      <End Role="Permision1" EntitySet="Permision1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyModule_Company_CompanyID" Association="Self.FK_CompanyModule_Company_CompanyID">
+      <End Role="Company1" EntitySet="Company1" />
+      <End Role="CompanyModule" EntitySet="CompanyModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCompany_Company_CompanyID" Association="Self.FK_UserCompany_Company_CompanyID">
+      <End Role="Company1" EntitySet="Company1" />
+      <End Role="UserCompany" EntitySet="UserCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyModule_Module_ModuleID" Association="Self.FK_CompanyModule_Module_ModuleID">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="CompanyModule" EntitySet="CompanyModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Option_Component" Association="Self.FK_Option_Component">
+      <End Role="Component" EntitySet="Component" />
+      <End Role="Option" EntitySet="Option" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ModuleOption_Module_ModuleID" Association="Self.FK_ModuleOption_Module_ModuleID">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="ModuleOption" EntitySet="ModuleOption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ModuleOption_Option_OptionID" Association="Self.FK_ModuleOption_Option_OptionID">
+      <End Role="Option" EntitySet="Option" />
+      <End Role="ModuleOption" EntitySet="ModuleOption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operation_Procedure_ProcedureID" Association="Self.FK_Operation_Procedure_ProcedureID">
+      <End Role="Procedure" EntitySet="Procedure" />
+      <End Role="Operation" EntitySet="Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OptionOperation_Operation_OperationID" Association="Self.FK_OptionOperation_Operation_OperationID">
+      <End Role="Operation" EntitySet="Operation" />
+      <End Role="OptionOperation" EntitySet="OptionOperation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OptionOperation_Option_OptionID" Association="Self.FK_OptionOperation_Option_OptionID">
+      <End Role="Option" EntitySet="Option" />
+      <End Role="OptionOperation" EntitySet="OptionOperation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleOption_Option_OptionID" Association="Self.FK_RoleOption_Option_OptionID">
+      <End Role="Option" EntitySet="Option" />
+      <End Role="RoleOption" EntitySet="RoleOption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserOperation_User_UserID" Association="Self.FK_UserOperation_User_UserID">
+      <End Role="User" EntitySet="User" />
+      <End Role="Permision1" EntitySet="Permision1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleOption_Role_RoleID" Association="Self.FK_RoleOption_Role_RoleID">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RoleOption" EntitySet="RoleOption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_Role_RoleID" Association="Self.FK_UserRole_Role_RoleID">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCompany_User_User" Association="Self.FK_UserCompany_User_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserCompany" EntitySet="UserCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_User_UserID" Association="Self.FK_UserRole_User_UserID">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <FunctionImport Name="rptControlAssistance" ReturnType="Collection(RELOJBIOModel.rptControlAssistance_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="DepartmentId" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="rptControlAssistance_V2" ReturnType="Collection(RELOJBIOModel.rptControlAssistance_V2_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="DepartmentId" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="rptControlBreak" ReturnType="Collection(RELOJBIOModel.rptControlBreak_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="DepartmentId" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="rptControlPunches" ReturnType="Collection(RELOJBIOModel.rptControlPunches_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="FinalDate" Mode="In" Type="DateTime" />
+      <Parameter Name="DepartmentID" Mode="In" Type="String" />
+      <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="rptControlSigning" ReturnType="Collection(RELOJBIOModel.rptControlSigning_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="CostCenterId" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="rptDialTracking" ReturnType="Collection(RELOJBIOModel.rptDialTracking_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="DepartmentId" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="IsInserted" Mode="In" Type="Boolean" />
+      <Parameter Name="IsModified" Mode="In" Type="Boolean" />
+      <Parameter Name="IsRemoved" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="rptExceptionTracking" ReturnType="Collection(RELOJBIOModel.rptExceptionTracking_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="DepartmentId" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spBreak" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="BreakID" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+      <Parameter Name="Deduct" Mode="In" Type="Boolean" />
+      <Parameter Name="AutoDeduct" Mode="In" Type="Boolean" />
+      <Parameter Name="DeductMinute" Mode="In" Type="Int32" />
+      <Parameter Name="MaxLong" Mode="In" Type="Int32" />
+      <Parameter Name="MinLong" Mode="In" Type="Int32" />
+      <Parameter Name="OvercountPaycode" Mode="In" Type="Int32" />
+      <Parameter Name="Overcount" Mode="In" Type="Boolean" />
+      <Parameter Name="NeedCheck" Mode="In" Type="Boolean" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+      <Parameter Name="ShiftID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spBreakShift" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="BreakShiftID" Mode="In" Type="Int32" />
+      <Parameter Name="BreakID" Mode="In" Type="Int32" />
+      <Parameter Name="ShiftID" Mode="In" Type="Int32" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spCity" ReturnType="Collection(RELOJBIOModel.spCity_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="CityID" Mode="In" Type="Int32" />
+      <Parameter Name="StateID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spCostCenter" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="CostCenterID" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="spCountry" ReturnType="Collection(RELOJBIOModel.spCountry_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="CountryID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spExtractorRegister" ReturnType="Collection(RELOJBIOModel.spExtractorRegister_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="DepartmentId" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spHolidayCompany" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="HolidayCompanyID" Mode="In" Type="Int32" />
+      <Parameter Name="HolidayDetailsID" Mode="In" Type="Int32" />
+      <Parameter Name="CompanyID" Mode="In" Type="Int32" />
+      <Parameter Name="Disable" Mode="In" Type="Boolean" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spHolidayDepartment" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="HolidayDepartmentID" Mode="In" Type="Int32" />
+      <Parameter Name="HolidayDetailsID" Mode="In" Type="Int32" />
+      <Parameter Name="DepartmentID" Mode="In" Type="Int32" />
+      <Parameter Name="Disable" Mode="In" Type="Boolean" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spHolidayDetails" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="HolidayDetailsID" Mode="In" Type="Int32" />
+      <Parameter Name="HolidayTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Hours" Mode="In" Type="Decimal" />
+      <Parameter Name="Rate" Mode="In" Type="Decimal" />
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="Count" Mode="In" Type="Int32" />
+      <Parameter Name="CountType" Mode="In" Type="Int32" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="spHolidayEmployee" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="HolidayEmployeeID" Mode="In" Type="Int32" />
+      <Parameter Name="HolidayDetailsID" Mode="In" Type="Int32" />
+      <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+      <Parameter Name="Disable" Mode="In" Type="Boolean" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spHolidayType" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="HolidayTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Desc" Mode="In" Type="String" />
+      <Parameter Name="HourType" Mode="In" Type="String" />
+      <Parameter Name="Level" Mode="In" Type="String" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spManualDialing" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ManualDialingID" Mode="In" Type="Int32" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="Reason" Mode="In" Type="String" />
+      <Parameter Name="RegistrationDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+      <Parameter Name="EditedPunchId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spParameter" ReturnType="Collection(RELOJBIOModel.spParameter_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ParameterID" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spPermision" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="PermisionID" Mode="In" Type="Int32" />
+      <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="PermisionTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="Observation" Mode="In" Type="String" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spPermisionType" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="PermisionTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="spSchedule" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ScheduleID" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Type" Mode="In" Type="Int32" />
+      <Parameter Name="CycleAvailable" Mode="In" Type="Boolean" />
+      <Parameter Name="IsPublic" Mode="In" Type="Boolean" />
+      <Parameter Name="CycleIncludeWeekend" Mode="In" Type="Boolean" />
+      <Parameter Name="CycleIncludeHoliday" Mode="In" Type="Boolean" />
+      <Parameter Name="CycleType" Mode="In" Type="Int32" />
+      <Parameter Name="CycleParameter" Mode="In" Type="Int32" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spScheduleDetails" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ScheduleDetailsID" Mode="In" Type="Int32" />
+      <Parameter Name="ScheduleID" Mode="In" Type="Int32" />
+      <Parameter Name="ShiftID" Mode="In" Type="Int32" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="Available" Mode="In" Type="Int32" />
+      <Parameter Name="Shift" Mode="In" Type="Int32" />
+      <Parameter Name="DetailType" Mode="In" Type="Int32" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spShift" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ShiftID" Mode="In" Type="Int32" />
+      <Parameter Name="ShiftTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="Flexible" Mode="In" Type="Boolean" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+      <Parameter Name="BeforeStart" Mode="In" Type="Int32" />
+      <Parameter Name="AfterEnd" Mode="In" Type="Int32" />
+      <Parameter Name="BeforeStart2" Mode="In" Type="Int32" />
+      <Parameter Name="AfterEnd2" Mode="In" Type="Int32" />
+      <Parameter Name="Late" Mode="In" Type="Boolean" />
+      <Parameter Name="LateCome" Mode="In" Type="Int32" />
+      <Parameter Name="Early" Mode="In" Type="Boolean" />
+      <Parameter Name="EarlyOut" Mode="In" Type="Int32" />
+      <Parameter Name="EarlyCome" Mode="In" Type="Int32" />
+      <Parameter Name="LateOut" Mode="In" Type="Int32" />
+      <Parameter Name="ShiftRound" Mode="In" Type="Boolean" />
+      <Parameter Name="CheckInRoundValue" Mode="In" Type="Int32" />
+      <Parameter Name="CheckOutRoundValue" Mode="In" Type="Int32" />
+      <Parameter Name="CheckInRoundDown" Mode="In" Type="Int32" />
+      <Parameter Name="CheckOutRoundDown" Mode="In" Type="Int32" />
+      <Parameter Name="Absent" Mode="In" Type="Int32" />
+      <Parameter Name="Color" Mode="In" Type="Int32" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="AllowBefore" Mode="In" Type="Boolean" />
+      <Parameter Name="AllowAfter" Mode="In" Type="Boolean" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+      <Parameter Name="BreakID" Mode="In" Type="Int32" />
+      <Parameter Name="RangeStartIni" Mode="In" Type="DateTime" />
+      <Parameter Name="RangeStartFin" Mode="In" Type="DateTime" />
+      <Parameter Name="RangeEndIni" Mode="In" Type="DateTime" />
+      <Parameter Name="RangeEndFin" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spShift_V2" ReturnType="Collection(RELOJBIOModel.spShift_V2_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ShiftID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spShiftType" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ShiftTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="spSigning" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="SigningID" Mode="In" Type="Int32" />
+      <Parameter Name="CostCenterID" Mode="In" Type="Int32" />
+      <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+      <Parameter Name="Observation" Mode="In" Type="String" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spState" ReturnType="Collection(RELOJBIOModel.spState_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="StateID" Mode="In" Type="Int32" />
+      <Parameter Name="CountryID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spTemplateSchedule">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="FechaIni" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+      <Parameter Name="DepartmentID" Mode="In" Type="Int32" />
+      <Parameter Name="DataSetXml" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spTerminal" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="TerminalID" Mode="In" Type="Int32" />
+      <Parameter Name="Number" Mode="In" Type="Int32" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Location" Mode="In" Type="String" />
+      <Parameter Name="ConnectType" Mode="In" Type="Int32" />
+      <Parameter Name="ConnectPwd" Mode="In" Type="String" />
+      <Parameter Name="DomainName" Mode="In" Type="String" />
+      <Parameter Name="TcpIp" Mode="In" Type="String" />
+      <Parameter Name="Port" Mode="In" Type="Int32" />
+      <Parameter Name="Serial" Mode="In" Type="String" />
+      <Parameter Name="Baudrate" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="Users" Mode="In" Type="Int32" />
+      <Parameter Name="Fingerprints" Mode="In" Type="Int32" />
+      <Parameter Name="Punches" Mode="In" Type="Int32" />
+      <Parameter Name="Zem" Mode="In" Type="String" />
+      <Parameter Name="Kind" Mode="In" Type="Int32" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="Faces" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spUploadPunches">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="DataSetXml" Mode="In" Type="String" />
+      <Parameter Name="PunchesID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="rptCabecera" ReturnType="Collection(RELOJBIOModel.rptCabecera_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Logo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spErrorDisplay">
+      <Parameter Name="Origen" Mode="In" Type="String" />
+      <Parameter Name="ErrorMessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spSequential">
+      <Parameter Name="Tabla" Mode="In" Type="String" />
+      <Parameter Name="Secuencial" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spCompany" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="CompanyID" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="DateFormat" Mode="In" Type="String" />
+      <Parameter Name="TimeFormat" Mode="In" Type="String" />
+      <Parameter Name="OperationMode" Mode="In" Type="Int32" />
+      <Parameter Name="MainAddress" Mode="In" Type="String" />
+      <Parameter Name="AlternateAddress" Mode="In" Type="String" />
+      <Parameter Name="CityID" Mode="In" Type="Int32" />
+      <Parameter Name="StateID" Mode="In" Type="Int32" />
+      <Parameter Name="CountryID" Mode="In" Type="Int32" />
+      <Parameter Name="PostalCode" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Fax" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Logo" Mode="In" Type="Binary" />
+      <Parameter Name="WebSite" Mode="In" Type="String" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spDepartment" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="DepartmentID" Mode="In" Type="Int32" />
+      <Parameter Name="CompanyID" Mode="In" Type="Int32" />
+      <Parameter Name="ScheduleID" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="ParentCode" Mode="In" Type="Int32" />
+      <Parameter Name="OperationMode" Mode="In" Type="Int32" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spEmployee" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+      <Parameter Name="DepartmentID" Mode="In" Type="Int32" />
+      <Parameter Name="ScheduleID" Mode="In" Type="Int32" />
+      <Parameter Name="Pin" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Salary" Mode="In" Type="Decimal" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Photo" Mode="In" Type="Binary" />
+      <Parameter Name="HireDate" Mode="In" Type="DateTime" />
+      <Parameter Name="MainAddress" Mode="In" Type="String" />
+      <Parameter Name="AlternateAddress" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="FireDate" Mode="In" Type="DateTime" />
+      <Parameter Name="FireReason" Mode="In" Type="String" />
+      <Parameter Name="MainEmergencyPhone" Mode="In" Type="String" />
+      <Parameter Name="AlternateEmergencyPhone" Mode="In" Type="String" />
+      <Parameter Name="EmergencyName" Mode="In" Type="String" />
+      <Parameter Name="EmergencyAddress" Mode="In" Type="String" />
+      <Parameter Name="CardNumber" Mode="In" Type="String" />
+      <Parameter Name="CountryID" Mode="In" Type="Int32" />
+      <Parameter Name="CityID" Mode="In" Type="Int32" />
+      <Parameter Name="StateID" Mode="In" Type="Int32" />
+      <Parameter Name="PostalCode" Mode="In" Type="String" />
+      <Parameter Name="Fax" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Title" Mode="In" Type="String" />
+      <Parameter Name="HourlyRate" Mode="In" Type="Decimal" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="BirthDay" Mode="In" Type="DateTime" />
+      <Parameter Name="OperationMode" Mode="In" Type="Int32" />
+      <Parameter Name="Remark" Mode="In" Type="String" />
+      <Parameter Name="IdentificationNumber" Mode="In" Type="String" />
+      <Parameter Name="EarnOvertime" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="spAuthorizeOptionModule" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ModuleOptionID" Mode="In" Type="Int32" />
+      <Parameter Name="OptionID" Mode="In" Type="Int32" />
+      <Parameter Name="ModuleID" Mode="In" Type="Int32" />
+      <Parameter Name="IsActive" Mode="In" Type="Int32" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spAuthorizeOptionRole" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="RoleOptionID" Mode="In" Type="Int32" />
+      <Parameter Name="RoleID" Mode="In" Type="Int32" />
+      <Parameter Name="OptionID" Mode="In" Type="Int32" />
+      <Parameter Name="IsActive" Mode="In" Type="Int32" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spAuthorizeUserCompany" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="UserCompanyID" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="CompanyID" Mode="In" Type="Int32" />
+      <Parameter Name="IsActive" Mode="In" Type="Int32" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spAuthorizeUserRole" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="UserRoleID" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="RoleID" Mode="In" Type="Int32" />
+      <Parameter Name="IsActive" Mode="In" Type="Int32" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spComponent" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ComponentID" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Container" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetAuthorization">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ProcedureName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spModule" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ModuleID" Mode="In" Type="Int32" />
+      <Parameter Name="Order" Mode="In" Type="String" />
+      <Parameter Name="Acronym" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spOption" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="OptionID" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Activation" Mode="In" Type="String" />
+      <Parameter Name="ComponentID" Mode="In" Type="Int32" />
+      <Parameter Name="IsActive" Mode="In" Type="Int32" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spRole" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="RoleID" Mode="In" Type="Int32" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="spSgCompany" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="CompanyID" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="Credential" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spUser" ReturnType="Collection(Int32)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Station" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Login" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Key" Mode="In" Type="String" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="Identification" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="LastChangePassword" Mode="In" Type="DateTime" />
+      <Parameter Name="DaysValidity" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordExpires" Mode="In" Type="String" />
+      <Parameter Name="StreetAddress" Mode="In" Type="String" />
+      <Parameter Name="CellPhone" Mode="In" Type="String" />
+      <Parameter Name="AddressPhone" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Int32" />
+      <Parameter Name="ModeFind" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="rptControlAssistance_Result">
+    <Property Type="String" Name="sistema" Nullable="false" MaxLength="47" />
+    <Property Type="String" Name="empresa" Nullable="true" MaxLength="120" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="estacion" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="rptControlAssistance_V2_Result">
+    <Property Type="String" Name="sistema" Nullable="false" MaxLength="47" />
+    <Property Type="String" Name="empresa" Nullable="true" MaxLength="120" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="estacion" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="rptControlBreak_Result">
+    <Property Type="String" Name="sistema" Nullable="false" MaxLength="47" />
+    <Property Type="String" Name="empresa" Nullable="true" MaxLength="120" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="estacion" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="rptControlPunches_Result">
+    <Property Type="String" Name="sistema" Nullable="false" MaxLength="47" />
+    <Property Type="String" Name="empresa" Nullable="true" MaxLength="120" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="estacion" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="rptControlSigning_Result">
+    <Property Type="String" Name="sistema" Nullable="false" MaxLength="47" />
+    <Property Type="String" Name="empresa" Nullable="true" MaxLength="120" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="estacion" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="rptDialTracking_Result">
+    <Property Type="String" Name="sistema" Nullable="false" MaxLength="47" />
+    <Property Type="String" Name="empresa" Nullable="true" MaxLength="120" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="estacion" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="rptExceptionTracking_Result">
+    <Property Type="String" Name="sistema" Nullable="false" MaxLength="47" />
+    <Property Type="String" Name="empresa" Nullable="true" MaxLength="120" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="estacion" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="spCity_Result">
+    <Property Type="Int32" Name="CityID" Nullable="false" />
+    <Property Type="Int32" Name="StateID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="25" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spCountry_Result">
+    <Property Type="Int32" Name="CountryID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="25" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spExtractorRegister_Result">
+    <Property Type="Int64" Name="Id" Nullable="true" />
+    <Property Type="Int32" Name="EmployeeId" Nullable="true" />
+    <Property Type="Int32" Name="EmployeePin" Nullable="true" />
+    <Property Type="String" Name="EmployeeName" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="DepartmentId" Nullable="true" />
+    <Property Type="String" Name="DepartmentName" Nullable="true" MaxLength="128" />
+    <Property Type="DateTime" Name="PunchTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="PunchTimeInt" Nullable="true" />
+    <Property Type="String" Name="DayNames" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="CheckIn" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="CheckOut" Nullable="true" MaxLength="7" />
+    <Property Type="Boolean" Name="IsHoliday" Nullable="true" />
+    <Property Type="String" Name="IdentificationNumber" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="spParameter_Result">
+    <Property Type="Int32" Name="ParameterID" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="65" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="1" />
+    <Property Type="Int32" Name="Integer" Nullable="true" />
+    <Property Type="Double" Name="Numeric" Nullable="true" />
+    <Property Type="String" Name="Chain" Nullable="true" MaxLength="300" />
+    <Property Type="Boolean" Name="Logical" Nullable="true" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="Binary" Name="Image" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="spShift_V2_Result">
+    <Property Type="Int32" Name="ShiftID" Nullable="false" />
+    <Property Type="Int32" Name="ShiftTypeID" Nullable="false" />
+    <Property Type="Boolean" Name="Flexible" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="65" />
+    <Property Type="DateTime" Name="Start" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="End" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="BeforeStart" Nullable="true" />
+    <Property Type="Int32" Name="AfterEnd" Nullable="true" />
+    <Property Type="Int32" Name="BeforeStart2" Nullable="true" />
+    <Property Type="Int32" Name="AfterEnd2" Nullable="true" />
+    <Property Type="Boolean" Name="Late" Nullable="true" />
+    <Property Type="Int32" Name="LateCome" Nullable="true" />
+    <Property Type="Boolean" Name="Early" Nullable="true" />
+    <Property Type="Int32" Name="EarlyOut" Nullable="true" />
+    <Property Type="Int32" Name="EarlyCome" Nullable="true" />
+    <Property Type="Int32" Name="LateOut" Nullable="true" />
+    <Property Type="Boolean" Name="ShiftRound" Nullable="true" />
+    <Property Type="Int32" Name="CheckInRoundValue" Nullable="true" />
+    <Property Type="Int32" Name="CheckOutRoundValue" Nullable="true" />
+    <Property Type="Int32" Name="CheckInRoundDown" Nullable="true" />
+    <Property Type="Int32" Name="CheckOutRoundDown" Nullable="true" />
+    <Property Type="Int32" Name="Absent" Nullable="true" />
+    <Property Type="Int32" Name="Color" Nullable="true" />
+    <Property Type="String" Name="Remark" Nullable="true" MaxLength="65" />
+    <Property Type="Boolean" Name="AllowBefore" Nullable="true" />
+    <Property Type="Boolean" Name="AllowAfter" Nullable="true" />
+    <Property Type="String" Name="Code" Nullable="true" MaxLength="5" />
+    <Property Type="DateTime" Name="RangeStartIni" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="RangeStartFin" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="RangeEndIni" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="RangeEndFin" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Monday" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spState_Result">
+    <Property Type="Int32" Name="StateID" Nullable="false" />
+    <Property Type="Int32" Name="CountryID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="25" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="rptCabecera_Result">
+    <Property Type="String" Name="sistema" Nullable="false" MaxLength="47" />
+    <Property Type="String" Name="empresa" Nullable="true" MaxLength="120" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="estacion" Nullable="true" MaxLength="25" />
+  </ComplexType>
+</Schema>

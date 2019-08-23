@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="486889b7851c402ea5fb9ab2a569eff0" Name="Diagram1">
+        <EntityTypeShape EntityType="RELOJBIOModel.Break" Width="1.5" PointX="13.5" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.BreakShift" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.City" Width="1.5" PointX="12.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.CostCenter" Width="1.5" PointX="16.5" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Country" Width="1.5" PointX="7.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.DayDetails" Width="1.5" PointX="15.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.DaySummary" Width="1.5" PointX="15.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.HolidayCompany" Width="1.5" PointX="5.25" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.HolidayDepartment" Width="1.5" PointX="10.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.HolidayDetails" Width="1.5" PointX="3" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.HolidayEmployee" Width="1.5" PointX="18.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.HolidayType" Width="1.5" PointX="0.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.ManualDialing" Width="1.5" PointX="15.75" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Parameter" Width="1.5" PointX="8.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Permision" Width="1.5" PointX="18.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.PermisionType" Width="1.5" PointX="16.5" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Punches" Width="1.5" PointX="21" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.PunchesLocked" Width="1.5" PointX="10.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.PunchType" Width="1.5" PointX="18.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Schedule" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.ScheduleDetails" Width="1.5" PointX="18.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Shift" Width="1.5" PointX="13.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.ShiftRoundrule" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.ShiftType" Width="1.5" PointX="11.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Signing" Width="1.5" PointX="18.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.State" Width="1.5" PointX="10" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Terminal" Width="1.5" PointX="15.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.TerminalEvents" Width="1.5" PointX="18" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.TerminalParameter" Width="1.5" PointX="18" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.WorkCode" Width="1.5" PointX="13.5" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.WorkState" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Sequential" Width="1.5" PointX="2.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Company" Width="1.5" PointX="3" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Department" Width="1.5" PointX="8.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Employee" Width="1.5" PointX="13.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Action" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Company1" Width="1.5" PointX="0.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.CompanyModule" Width="1.5" PointX="6" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Component" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Module" Width="1.5" PointX="3.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.ModuleOption" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Operation" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Option" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.OptionOperation" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Permision1" Width="1.5" PointX="9" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Procedure" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.Role" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.RoleOption" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.User" Width="1.5" PointX="3.75" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.UserCompany" Width="1.5" PointX="6" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RELOJBIOModel.UserRole" Width="1.5" PointX="9" PointY="15.5" IsExpanded="true" />
+        <AssociationConnector Association="RELOJBIOModel.FK_BreakShift_Break" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_BreakShift_Shift" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_City_State" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Signing_CostCenter" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_State_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_DayDetails_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_DayDetails_Shift" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_DayDetails_WorkCode" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_DaySummary_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_HolidayCompany_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_HolidayCompany_HolidayDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_HolidayDepartment_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_HolidayDepartment_HolidayDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_HolidayDetails_HolidayType" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_HolidayEmployee_HolidayDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_HolidayEmployee_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_ManualDialing_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Permision_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Permision_PermisionType" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Punches_PunchType" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Punches_Terminal" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Punches_WorkCode" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Department_Schedule" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Employee_Schedule" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_ScheduleDetails_Schedule" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_ScheduleDetails_Shift" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Shift_ShiftType" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_ShiftRoundrule_Shift" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Signing_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_TerminalEvents_Terminal" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_TerminalParameter_Terminal" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Company_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Department_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Employee_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Operation_Action_ActionID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Permision_Action" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_CompanyModule_Company_CompanyID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_UserCompany_Company_CompanyID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_CompanyModule_Module_ModuleID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Option_Component" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_ModuleOption_Module_ModuleID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_ModuleOption_Option_OptionID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_Operation_Procedure_ProcedureID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_OptionOperation_Operation_OperationID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_OptionOperation_Option_OptionID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_RoleOption_Option_OptionID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_UserOperation_User_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_RoleOption_Role_RoleID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_UserRole_Role_RoleID" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_UserCompany_User_User" ManuallyRouted="false" />
+        <AssociationConnector Association="RELOJBIOModel.FK_UserRole_User_UserID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,71 @@
+﻿@using RelojBio.ViewModel;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@ViewBag.Title - Reloj Biometrico</title>
+    <link href="~/ContentPG/Stylos/bootstrap.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/font-awesome.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/nprogress.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/animate.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/custom.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/toastr.min.css" rel="stylesheet" />
+
+</head>
+
+
+@RenderBody()
+
+</html>
+
+
+<script src="~/ContentPG/Script/jquery.min.js"></script>
+<script src="~/ContentPG/Script/toastr.min.js"></script>
+
+@if (Session["Mensaje"] != null)
+{
+
+    Mensaje OMensaje = Session["Mensaje"] as Mensaje;
+
+    var wTipo = OMensaje.Tipo;
+    var wMsg = OMensaje.Msg;
+
+    if (OMensaje.Tipo == "Exito")
+    {
+        <script type="text/javascript">
+            toastr.success('@wMsg.ToString()', '');
+        </script>
+
+    }
+    else if (OMensaje.Tipo == "Error")
+    {
+        <script type="text/javascript">
+            toastr.error('@wMsg.ToString()', 'Error');
+        </script>
+
+    }
+    else if (OMensaje.Tipo == "Alerta")
+    {
+        <script type="text/javascript">
+            toastr.warning('@wMsg.ToString()', 'Alerta');
+        </script>
+
+    }
+    else if (OMensaje.Tipo == "Info")
+    {
+        <script type="text/javascript">
+            toastr.info('@wMsg.ToString()', 'Información');
+        </script>
+
+    }
+
+    Session["Mensaje"] = null;
+
+}
+
