@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DepartamentosController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalidadController.cs" />
@@ -346,6 +347,7 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\DepartamentosViewModel.cs" />
     <Compile Include="ViewModel\EmpleadoViewModel.cs" />
     <Compile Include="ViewModel\Genero.cs" />
     <Compile Include="ViewModel\LoginRegistroViewModel.cs" />
@@ -574,6 +576,9 @@
     <Content Include="Views\Empleado\Index.cshtml" />
     <Content Include="Views\Empleado\Create.cshtml" />
     <Content Include="Views\Empleado\Edit.cshtml" />
+    <Content Include="Views\Departamentos\Index.cshtml" />
+    <Content Include="Views\Departamentos\Create.cshtml" />
+    <Content Include="Views\Departamentos\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
