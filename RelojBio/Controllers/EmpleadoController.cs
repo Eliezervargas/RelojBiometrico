@@ -470,7 +470,6 @@ namespace RelojBio.Controllers
                     wdb.Employee.Remove(OEmpleado);
                     wdb.SaveChanges();
 
-
                     string wpath = Server.MapPath("/Imagenes/Clientes");
                     wpath = wpath + "/" + OEmpleado.EmployeeID + ".png";
 
