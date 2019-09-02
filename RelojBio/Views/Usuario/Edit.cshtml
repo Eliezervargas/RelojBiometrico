@@ -1,0 +1,275 @@
+﻿@model RelojBio.ViewModel.UserViewModel
+
+@{
+    ViewBag.Title = "Modificar";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                @*<h3>Empleado/</h3>*@
+                <ul class="breadcrumb">
+                    <li><i class="icon-home2 position-left"></i><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                    <li><a href="@Url.Action("Index", "Usuario")">Usuarios</a></li>
+                    <li class="active">Modificar Usuario</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        @using (Html.BeginForm("Edit", "Usuario", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="hidden">
+                @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+
+            <div class="row">
+                <br />
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Datos General</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="x_content">
+
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 1100px; text-transform: uppercase" } })
+                                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <div class="input-group">
+                                        <input id="Password" name="Password" type="password" value="@Model.Password" class="form-control" placeholder="Password">
+                                        <span class="input-group-addon" id="PasswordIcono"><i class="fa fa-eye"></i></span>
+                                    </div>
+                                </div>
+                                <br />
+
+                            </div>
+
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.PasswordExpires, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.PasswordExpires)
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.DaysValidity, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.DaysValidity, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DaysValidity, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+
+                            </div>
+
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.LastChangePassword, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <div class="input-group date myDatepicker">
+                                        @Html.EditorFor(model => model.LastChangePassword, new { htmlAttributes = new { @class = "form-control" } })
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.LastChangePassword, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+
+                            </div>
+
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.IsActive)
+                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+                            </div>
+
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.ListCompaniaCodigoSeleccionadas, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <select id="ListCompaniaCodigoSeleccionadas" multiple name="ListCompaniaCodigoSeleccionadas" class="form-control">
+                                        @if (Model.ListCompania != null)
+                                        {
+                                            foreach (RelojBio.Models.Company C in Model.ListCompania)
+                                            {
+                                                int wvalor = C.CompanyID;
+                                                string wdes = C.Name;
+                                                bool wSw = false;
+
+                                                if (Model.ListCompaniaSeleccionadas != null)
+                                                {
+                                                    foreach (var item in Model.ListCompaniaSeleccionadas)
+                                                    {
+
+                                                        if (wvalor == item.CompanyID)
+                                                        {
+                                                            <option selected value=@wvalor>@wdes</option>
+                                                            wSw = true;
+                                                        }
+
+                                                    }
+                                                }
+
+                                                if (wSw == false)
+                                                {
+                                                    <option value=@wvalor>@wdes</option>
+                                                }
+
+
+                                            }
+
+                                        }
+
+                                    </select>
+                                </div>
+                                <br />
+                            </div>
+
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.ListRolesCodigoSeleccionados, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <select id="ListRolesCodigoSeleccionados" multiple name="ListRolesCodigoSeleccionados" class="form-control">
+                                        @if (Model.ListRoles != null)
+                                        {
+                                            foreach (RelojBio.Models.Role C in Model.ListRoles)
+                                            {
+                                                int wvalor = C.RoleID;
+                                                string wdes = C.Description;
+                                                bool wSw = false;
+
+                                                if (Model.ListRolesSeleccionados != null)
+                                                {
+                                                    foreach (var item in Model.ListRolesSeleccionados)
+                                                    {
+
+                                                        if (wvalor == item.RoleID)
+                                                        {
+                                                            <option selected value=@wvalor>@wdes</option>
+                                                            wSw = true;
+                                                        }
+
+                                                    }
+                                                }
+
+                                                if (wSw == false)
+                                                {
+                                                    <option value=@wvalor>@wdes</option>
+                                                }
+
+
+                                            }
+
+                                        }
+
+                                    </select>
+                                </div>
+                                <br />
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <br />
+
+                                <div class="col-md-offset-2 col-md-10">
+                                    <a class="btn btn-default" href="@Url.Action("Index", "Usuario")"> <span class="fa fa-mail-reply-all"></span> Regresar</a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-plus"></span> Guardar
+                                    </button>
+                                </div>
+                                <br />
+                            </div>
+                            <br />
+
+                        </div>
+
+                        <br />
+                    </div>
+                    <br />
+
+                </div>
+                <br />
+            </div>
+
+
+
+        }
+
+
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <script src="~/Scripts/UsuarioScript.js"></script>
+}
+

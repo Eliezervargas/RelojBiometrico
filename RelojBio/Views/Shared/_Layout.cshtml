@@ -21,6 +21,7 @@
     <link href="~/ContentPG/Stylos/daterangepicker.css" rel="stylesheet">
     <link href="~/ContentPG/Stylos/custom.min.css" rel="stylesheet">
     <link href="~/ContentPG/Stylos/toastr.min.css" rel="stylesheet" />
+    <link href="~/ContentPG/Stylos/bootstrap-datetimepicker.css" rel="stylesheet">
 
 </head>
 
@@ -55,98 +56,272 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             @{
-                                int wIsAdmin = 0;
+                                bool wVerUsuario = false;
+                                bool wVerRoles = false;
+                                bool wVerEmpresas = false;
+                                bool wVerEmpleado = false;
+                                bool wVerDepartamento = false;
+                                bool wVerDiaFestivo = false;
+                                bool wVerCentroCosto = false;
+                                bool wverDispositivos = false;
+                                bool wVerUsb = false;
+                                bool wVerRed = false;
+                                bool wVerHorarios = false;
+                                bool wVerTurnos = false;
+                                bool wVerDescanso = false;
+                                bool wVerConfiguracionRapida = false;
+                                bool wVerExtractorRegistro = false;
+                                bool wVerAdministracionFichaje = false;
+                                bool wVerControlMarcacion = false;
+                                bool wVerControlAsistencia = false;
+                                bool wVerTiempoLibre = false;
+                                bool wVerSeguimientoExcepcion = false;
+                                bool wVerSeguimientoMacacion = false;
+                                bool wVerSeguimientoFcihaje = false;
+                                bool wVerControlAsistenciaBN = false;
 
-                                if (Session["Rol"] != null)
+                                //Obtengo todos las opciones que tiene este usuario
+                                if (Session["ListOpciones"] != null)
                                 {
+                                    //Variables para controlar si se ven o no las opciones
 
-                                    if (Convert.ToInt32(Session["Rol"]) == 1)
+                                    foreach (var ListOpciones in Session["ListOpciones"] as List<List<RelojBio.Models.RoleOption>>)
                                     {
-                                        wIsAdmin = 1;
+                                        foreach (var Opciones in ListOpciones)
+                                        {
+                                            switch (Opciones.OptionID)
+                                            {
+                                                case 2:
+                                                    wVerUsuario = true;
+                                                    break;
+                                                case 3:
+                                                    wVerRoles = true;
+                                                    break;
+                                                case 8:
+                                                    wVerEmpresas = true;
+                                                    break;
+                                                case 9:
+                                                    wVerEmpleado = true;
+                                                    break;
+                                                case 10:
+                                                    wVerDepartamento = true;
+                                                    break;
+                                                case 11:
+                                                    wVerDiaFestivo = true;
+                                                    break;
+                                                case 30:
+                                                    wVerCentroCosto = true;
+                                                    break;
+                                                case 13:
+                                                    wverDispositivos = true;
+                                                    break;
+                                                case 14:
+                                                    wVerUsb = true;
+                                                    break;
+                                                case 15:
+                                                    wVerRed = true;
+                                                    break;
+                                                case 17:
+                                                    wVerHorarios = true;
+                                                    break;
+                                                case 18:
+                                                    wVerTurnos = true;
+                                                    break;
+                                                case 19:
+                                                    wVerDescanso = true;
+                                                    break;
+                                                case 21:
+                                                    wVerConfiguracionRapida = true;
+                                                    break;
+                                                case 26:
+                                                    wVerExtractorRegistro = true;
+                                                    break;
+                                                case 16:
+                                                    wVerAdministracionFichaje = true;
+                                                    break;
+                                                case 23:
+                                                    wVerControlMarcacion = true;
+                                                    break;
+                                                case 24:
+                                                    wVerControlAsistencia = true;
+                                                    break;
+                                                case 25:
+                                                    wVerTiempoLibre = true;
+                                                    break;
+                                                case 27:
+                                                    wVerSeguimientoExcepcion = true;
+                                                    break;
+                                                case 28:
+                                                    wVerSeguimientoMacacion = true;
+                                                    break;
+                                                case 31:
+                                                    wVerAdministracionFichaje = true;
+                                                    break;
+                                                case 32:
+                                                    wVerControlAsistenciaBN = true;
+                                                    break;
+                                            }
+
+                                        }
+
                                     }
                                 }
-
-                                if (wIsAdmin == 1)
-                                {
-                                    <h3>Menu Administrador</h3>
-
-                                    <ul class="nav side-menu">
-                                        <li>
-                                            <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                                        </li>
-
-                                        <li>
-                                            <a><i class="fa fa-table"></i>Maestros<span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                <li><a href="tables.html"></a>Usuarios</li>
-                                                <li><a href="tables_dynamic.html">Roles</a></li>
-                                                <li><a href="tables_dynamic.html">Compañia</a></li>
-                                                <li><a href="tables_dynamic.html">Asignacion de Roles</a></li>
-                                            </ul>
-                                        </li>
-
-                                    </ul>
-
-                                }
-                                else
-                                {
-                                    <h3>General</h3>
-
-                                    <ul class="nav side-menu">
-                                        <li>
-                                            <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Home </a>
-                                        </li>
-                                        <li>
-                                            <a><i class="fa fa-edit"></i> Mantenimiento<span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                <li><a href="#">Empresas</a></li>
-                                                <li><a href="@Url.Action("Index","Empleado")">Empleados</a></li>
-                                                <li><a href="@Url.Action("Index","Departamentos")">Departamentos</a></li>
-                                                <li><a href="#">Días Festivos</a></li>
-                                                <li><a href="#">Centro de Costos</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li>
-                                            <a><i class="glyphicon glyphicon-random"></i> Dispositivos<span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                <li><a href="#">Dispositivos</a></li>
-                                                <li><a href="#">Descargar Usb</a></li>
-                                                <li><a href="#">Descargar Red</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li>
-                                            <a><i class="fa fa-desktop"></i> Procesos<span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                <li><a href="#">Horarios</a></li>
-                                                <li><a href="#">Turnos</a></li>
-                                                <li><a href="#">Descansos</a></li>
-                                                <li><a href="#">Configuracion rapida de Turnos</a></li>
-                                                <li><a href="#">Extractor de Registros</a></li>
-                                                <li><a href="#">Administracion de Fichajes</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li>
-                                            <a><i class="fa fa-file-pdf-o"></i> Reportes<span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                <li><a href="#">Control Marcaciones</a></li>
-                                                <li><a href="#">Control Asistencia</a></li>
-                                                <li><a href="#">Control Tiempo Libre</a></li>
-                                                <li><a href="#">Seguimiento Excepción</a></li>
-                                                <li><a href="#">Seguimiento Marcación</a></li>
-                                                <li><a href="#">Seguimiento de Fichajes</a></li>
-                                                <li><a href="#">Control Asistencia BN</a></li>
-                                            </ul>
-                                        </li>
-
-
-                                    </ul>
-
-                                }
-
                             }
+
+                            <h3>Menu Principal</h3>
+
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Home </a>
+                                </li>
+
+                                @if (wVerUsuario == true || wVerRoles == true)
+                                {
+                                    <li>
+                                        <a><i class="fa fa-table"></i>Administración Sistema<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            @if (wVerUsuario == true)
+                                            {
+                                                <li><a href="@Url.Action("Index","Usuario")">Usuarios</a></li>
+                                            }
+                                            @if (wVerRoles == true)
+                                            {
+                                                <li><a href="@Url.Action("Index","Role")">Roles</a></li>
+
+                                            }
+                                        </ul>
+                                    </li>
+
+                                }
+
+                                @if (wVerEmpresas == true || wVerEmpleado == true || wVerDepartamento == true || wVerDiaFestivo == true || wVerCentroCosto == true)
+                                {
+                                    <li>
+                                        <a><i class="fa fa-edit"></i> Mantenimiento<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            @if (wVerEmpresas == true)
+                                            {
+                                                <li><a href="#">Empresas</a></li>
+                                            }
+                                            @if (wVerEmpleado == true)
+                                            {
+                                                <li><a href="@Url.Action("Index","Empleado")">Empleados</a></li>
+                                            }
+                                            @if (wVerDepartamento == true)
+                                            {
+                                                <li><a href="@Url.Action("Index","Departamentos")">Departamentos</a></li>
+                                            }
+                                            @if (wVerDiaFestivo == true)
+                                            {
+                                                <li><a href="#">Días Festivos</a></li>
+                                            }
+                                            @if (wVerCentroCosto == true)
+                                            {
+                                                <li><a href="#">Centro de Costos</a></li>
+                                            }
+
+                                        </ul>
+                                    </li>
+
+                                }
+
+                                @if (wverDispositivos == true || wVerUsb == true || wVerRed == true)
+                                {
+                                    <li>
+                                        <a><i class="glyphicon glyphicon-random"></i> Dispositivos<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            @if (wverDispositivos == true)
+                                            {
+                                                <li><a href="#">Dispositivos</a></li>
+
+                                            }
+                                            @if (wVerUsb == true)
+                                            {
+                                                <li><a href="#">Descargar Usb</a></li>
+                                            }
+                                            @if (wVerRed == true)
+                                            {
+                                                <li><a href="#">Descargar Red</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+
+                                @if (wVerHorarios == true || wVerTurnos == true || wVerDescanso == true || wVerConfiguracionRapida == true || wVerExtractorRegistro == true || wVerAdministracionFichaje == true)
+                                {
+                                    <li>
+                                        <a><i class="fa fa-desktop"></i> Procesos<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            @if (wVerHorarios == true)
+                                            {
+                                                <li><a href="#">Horarios</a></li>
+                                            }
+                                            @if (wVerTurnos == true)
+                                            {
+                                                <li><a href="#">Turnos</a></li>
+                                            }
+                                            @if (wVerDescanso == true)
+                                            {
+                                                <li><a href="#">Descansos</a></li>
+                                            }
+                                            @if (wVerConfiguracionRapida == true)
+                                            {
+                                                <li><a href="#">Configuracion rapida de Turnos</a></li>
+                                            }
+                                            @if (wVerExtractorRegistro == true)
+                                            {
+                                                <li><a href="#">Extractor de Registros</a></li>
+                                            }
+                                            @if (wVerAdministracionFichaje == true)
+                                            {
+                                                <li><a href="#">Administracion de Fichajes</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+
+                                }
+
+                                @if (wVerControlMarcacion == true || wVerControlAsistencia == true || wVerTiempoLibre == true || wVerSeguimientoExcepcion == true || wVerSeguimientoMacacion == true || wVerAdministracionFichaje == true || wVerControlAsistenciaBN == true)
+                                {
+                                    <li>
+                                        <a><i class="fa fa-file-pdf-o"></i> Reportes<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            @if (wVerControlMarcacion == true)
+                                            {
+                                                <li><a href="#">Control Marcaciones</a></li>
+                                            }
+                                            @if (wVerControlAsistencia == true)
+                                            {
+                                                <li><a href="#">Control Asistencia</a></li>
+                                            }
+                                            @if (wVerTiempoLibre == true)
+                                            {
+                                                <li><a href="#">Control Tiempo Libre</a></li>
+                                            }
+                                            @if (wVerSeguimientoExcepcion == true)
+                                            {
+                                                <li><a href="#">Seguimiento Excepción</a></li>
+                                            }
+                                            @if (wVerSeguimientoMacacion == true)
+                                            {
+                                                <li><a href="#">Seguimiento Marcación</a></li>
+                                            }
+                                            @if (wVerSeguimientoFcihaje == true)
+                                            {
+                                                <li><a href="#">Seguimiento de Fichajes</a></li>
+                                            }
+                                            @if (wVerControlAsistenciaBN == true)
+                                            {
+                                                <li><a href="#">Control Asistencia BN</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+
+
+
+                                }
+                            </ul>
+
                         </div>
 
                     </div>
@@ -239,25 +414,31 @@
     <script src="~/ContentPG/Script/toastr.min.js"></script>
 
 
-
     <script src="~/ContentPG/Script/jquery.dataTables.min.js"></script>
-        <script src="~/ContentPG/Script/dataTables.bootstrap.min.js"></script>
-        <script src="~/ContentPG/Script/dataTables.buttons.min.js"></script>
-        <script src="~/ContentPG/Script/buttons.bootstrap.min.js"></script>
-        <script src="~/ContentPG/Script/buttons.flash.min.js"></script>
-        <script src="~/ContentPG/Script/buttons.html5.min.js"></script>
-        <script src="~/ContentPG/Script/buttons.print.min.js"></script>
-        <script src="~/ContentPG/Script/dataTables.fixedHeader.min.js"></script>
-        <script src="~/ContentPG/Script/dataTables.keyTable.min.js"></script>
-        <script src="~/ContentPG/Script/dataTables.responsive.min.js"></script>
-        <script src="~/ContentPG/Script/responsive.bootstrap.js"></script>
-        <script src="~/ContentPG/Script/dataTables.scroller.min.js"></script>
-        <script src="~/ContentPG/Script/jszip.min.js"></script>
-        <script src="~/ContentPG/Script/pdfmake.min.js"></script>
-        <script src="~/ContentPG/Script/vfs_fonts.js"></script>
+    <script src="~/ContentPG/Script/dataTables.bootstrap.min.js"></script>
+    <script src="~/ContentPG/Script/dataTables.buttons.min.js"></script>
+    <script src="~/ContentPG/Script/buttons.bootstrap.min.js"></script>
+    <script src="~/ContentPG/Script/buttons.flash.min.js"></script>
+    <script src="~/ContentPG/Script/buttons.html5.min.js"></script>
+    <script src="~/ContentPG/Script/buttons.print.min.js"></script>
+    <script src="~/ContentPG/Script/dataTables.fixedHeader.min.js"></script>
+    <script src="~/ContentPG/Script/dataTables.keyTable.min.js"></script>
+    <script src="~/ContentPG/Script/dataTables.responsive.min.js"></script>
+    <script src="~/ContentPG/Script/responsive.bootstrap.js"></script>
+    <script src="~/ContentPG/Script/dataTables.scroller.min.js"></script>
+    <script src="~/ContentPG/Script/jszip.min.js"></script>
+    <script src="~/ContentPG/Script/pdfmake.min.js"></script>
+    <script src="~/ContentPG/Script/vfs_fonts.js"></script>
 
 
     <script src="~/ContentPG/Script/custom.min.js"></script>
+
+
+
+    <!-- bootstrap-datetimepicker -->
+    <script src="~/ContentPG/Script/bootstrap-datetimepicker.min.js"></script>
+    <!-- Bootstrap Colorpicker -->
+    <script src="~/ContentPG/Script/bootstrap-colorpicker.min.js"></script>
 
 
 

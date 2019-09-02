@@ -1,0 +1,149 @@
+﻿@model RelojBio.ViewModel.RoleViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                @*<h3>Empleado/</h3>*@
+                <ul class="breadcrumb">
+                    <li><i class="icon-home2 position-left"></i><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                    <li><a href="@Url.Action("Index", "Role")">Roles</a></li>
+                    <li class="active">Nuevo Rol</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        @using (Html.BeginForm("Create", "Role", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+            <div class="row">
+                <br />
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Datos General</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="x_content">
+
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 1100px; text-transform: uppercase" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.IsActive)
+                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+                            </div>
+
+
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.LisCodigoOpcionesSeleccionados, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <select id="LisCodigoOpcionesSeleccionados" multiple name="LisCodigoOpcionesSeleccionados" class="form-control">
+                                        @if (Model.LisOpciones != null)
+                                        {
+                                            foreach (RelojBio.Models.Option C in Model.LisOpciones)
+                                            {
+                                                int wvalor = C.OptionID;
+                                                string wdes = C.Name;
+                                                bool wSw = false;
+
+                                                if (Model.LisOpcionesSeleccionados != null)
+                                                {
+                                                    foreach (var item in Model.LisOpcionesSeleccionados)
+                                                    {
+
+                                                        if (wvalor == item.OptionID)
+                                                        {
+                                                            <option selected value=@wvalor>@wdes</option>
+                                                            wSw = true;
+                                                        }
+
+                                                    }
+                                                }
+
+                                                if (wSw == false)
+                                                {
+                                                    <option value=@wvalor>@wdes</option>
+                                                }
+
+
+                                            }
+
+                                        }
+
+                                    </select>
+                                </div>
+                                <br />
+                            </div>
+
+
+                            <div class="form-group">
+                                <br />
+
+                                <div class="col-md-offset-2 col-md-10">
+                                    <a class="btn btn-default" href="@Url.Action("Index", "Role")"> <span class="fa fa-mail-reply-all"></span> Regresar</a>
+                                    @*<input type="submit" id="Create" name="Create" value="Guardar" class="btn btn-success confirm"/>*@
+                                    <button type="submit" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-plus"></span> Guardar
+                                    </button>
+                                </div>
+                                <br />
+                            </div>
+                            <br />
+
+                        </div>
+
+                        <br />
+                    </div>
+                    <br />
+
+                </div>
+                <br />
+            </div>
+
+        }
+
+
+
+    </div>
+
+</div>

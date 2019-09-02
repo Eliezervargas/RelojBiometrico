@@ -51,7 +51,14 @@ namespace RelojBio.Controllers
                             Response.Cookies.Add(cookies);
 
                             var OusuarioCompannia = wdb.UserCompany.Where(a => a.UserID == OUsuario.UserID).FirstOrDefault();
-                            var OUsuarioRol = wdb.UserRole.Where(a => a.UserID == OUsuario.UserID).FirstOrDefault();
+                            var ListUsuarioRol = wdb.UserRole.Where(a => a.UserID == OUsuario.UserID).ToList();
+                            var ListRolOpciones = new List<List<RoleOption>>();
+
+                            foreach (var Rol in ListUsuarioRol)
+                            {
+                                var ListOpciones = wdb.RoleOption.Where(a => a.RoleID == Rol.RoleID).ToList();
+                                ListRolOpciones.Add(ListOpciones);
+                            }
 
                             Session["UserId"] = OUsuario.UserID;
                             Session["UserName"] = OUsuario.FullName;
@@ -59,8 +66,8 @@ namespace RelojBio.Controllers
                             if (OusuarioCompannia != null)
                                 Session["Compannia"] = OusuarioCompannia.CompanyID;
 
-                            if (OUsuarioRol != null)
-                                Session["Rol"] = OUsuarioRol.RoleID;
+                            if (ListRolOpciones != null)
+                                Session["ListOpciones"] = ListRolOpciones;
 
                             return RedirectToAction("Index","Home");
                         }
