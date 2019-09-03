@@ -254,15 +254,15 @@
                                         <ul class="nav child_menu">
                                             @if (wVerHorarios == true)
                                             {
-                                                <li><a href="#">Horarios</a></li>
+                                                <li><a href="@Url.Action("Index","Horario")">Horarios</a></li>
                                             }
                                             @if (wVerTurnos == true)
                                             {
-                                                <li><a href="#">Turnos</a></li>
+                                                <li><a href="@Url.Action("Index","Turno")">Turnos</a></li>
                                             }
                                             @if (wVerDescanso == true)
                                             {
-                                                <li><a href="#">Descansos</a></li>
+                                                <li><a href="@Url.Action("Index","Descanso")">Descansos</a></li>
                                             }
                                             @if (wVerConfiguracionRapida == true)
                                             {
