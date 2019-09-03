@@ -24,6 +24,8 @@ namespace RelojBio.Controllers
                 return View(ListRoles);
             }
 
+
+
         }
 
         [HttpGet]
@@ -86,7 +88,7 @@ namespace RelojBio.Controllers
                         if (OExiste == null)
                         {
                             var OUltimoRoleOption = wdb.RoleOption.OrderByDescending(a => a.RoleOptionID).FirstOrDefault();
-                            int wID = OUltimoRoleOption.RoleID + 1;
+                            int wID = OUltimoRoleOption.RoleOptionID + 1;
 
                             var ORoleOption = new RoleOption
                             {
@@ -246,6 +248,23 @@ namespace RelojBio.Controllers
                 using (RELOJBIOEntities wdb = new RELOJBIOEntities())
                 {
                     var ORole = wdb.Role.Where(a => a.RoleID == Id).FirstOrDefault();
+
+                    var ListRoleOption = wdb.RoleOption.Where(a => a.RoleID == Id).ToList();
+                    foreach (var item in ListRoleOption)
+                    {
+                        var ORoleOption = wdb.RoleOption.Where(a => a.RoleOptionID == item.RoleOptionID).FirstOrDefault();
+                        wdb.RoleOption.Remove(ORoleOption);
+                        wdb.SaveChanges();
+                    }
+
+                    var ListUserRole = wdb.UserRole.Where(a => a.RoleID == Id).ToList();
+                    foreach (var item in ListUserRole)
+                    {
+                        var OUserRole = wdb.UserRole.Where(a => a.UserRoleID == item.UserRoleID).FirstOrDefault();
+                        wdb.UserRole.Remove(OUserRole);
+                        wdb.SaveChanges();
+                    }
+
 
                     wdb.Role.Remove(ORole);
                     wdb.SaveChanges();
