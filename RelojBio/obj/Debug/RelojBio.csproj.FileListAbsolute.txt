@@ -172,3 +172,4 @@ D:\RelojBiometrico\RelojBio\obj\Debug\RelojBio.csproj.CoreCompileInputs.cache
 D:\RelojBiometrico\RelojBio\obj\Debug\RelojBio.csproj.CopyComplete
 D:\RelojBiometrico\RelojBio\obj\Debug\RelojBio.dll
 D:\RelojBiometrico\RelojBio\obj\Debug\RelojBio.pdb
+D:\RelojBiometrico\RelojBio\bin\Rotativa.dll

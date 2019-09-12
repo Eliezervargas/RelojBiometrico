@@ -1,0 +1,147 @@
+﻿@model RelojBio.ViewModel.ReportesViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+                <ul class="breadcrumb">
+                    <li><i class="icon-home2 position-left"></i><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                    @if (Model.Tipo == 1)
+                    {
+                        <li class="active">Control de Marcaciones</li>
+                    }
+                    else if (Model.Tipo == 2)
+                    {
+                        <li class="active">Control de Asistencia</li>
+                    }
+                    else if (Model.Tipo == 3)
+                    {
+                        <li class="active">Control Tiempo Libre</li>
+                    }
+                    else if (Model.Tipo == 4)
+                    {
+                        <li class="active">Seguimiento de Exepción </li>
+                    }
+                    else if (Model.Tipo == 5)
+                    {
+                        <li class="active">Seguimiento de Marcación</li>
+                    }
+                    else if (Model.Tipo == 6)
+                    {
+                        <li class="active">Seguimiento de Fichajes</li>
+                    }
+                    else if (Model.Tipo == 7)
+                    {
+                        <li class="active">Control de Asistencia BN</li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        @using (Html.BeginForm("Imprimir", "Reporte"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+            <div class="row">
+                <br />
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Reporte</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="x_content">
+
+
+                            <div class="row hidden">
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.Tipo, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <br />
+
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.Empleado, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.DropDownListFor(model => model.Empleado, Model.ListaEmpleados, "Seleccione...", new { @class = "form-control", @style = "max-width: 1100px" })
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.ListaCodigoDepartamentosSeleccionados, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <select id="ListaCodigoDepartamentosSeleccionados" multiple name="ListaCodigoDepartamentosSeleccionados" class="form-control">
+                                        @if (Model.ListaDepartamentos != null)
+                                        {
+
+                                            foreach (RelojBio.Models.Department C in Model.ListaDepartamentos)
+                                            {
+                                                int wvalor = C.DepartmentID;
+                                                string wdes = C.Name;
+
+                                                <option value=@wvalor>@wdes</option>
+
+                                            }
+
+                                        }
+
+                                    </select>
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="form-group">
+                                <br />
+
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-plus"></span> Imprimir
+                                    </button>
+                                </div>
+                                <br />
+                            </div>
+
+                        </div>
+
+                        <br />
+                    </div>
+                    <br />
+
+                </div>
+                <br />
+            </div>
+
+
+        }
+
+
+    </div>
+
+</div>
+
+

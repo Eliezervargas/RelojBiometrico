@@ -52,6 +52,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -132,8 +135,10 @@
     <Compile Include="Controllers\DescansoController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HorarioController.cs" />
     <Compile Include="Controllers\LocalidadController.cs" />
     <Compile Include="Controllers\LoginRegistroController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TurnoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -351,12 +356,15 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ControlMarcacionViewModel.cs" />
     <Compile Include="ViewModel\DepartamentosViewModel.cs" />
     <Compile Include="ViewModel\DescansoViewModel.cs" />
     <Compile Include="ViewModel\EmpleadoViewModel.cs" />
     <Compile Include="ViewModel\Genero.cs" />
+    <Compile Include="ViewModel\HorarioViewModel.cs" />
     <Compile Include="ViewModel\LoginRegistroViewModel.cs" />
     <Compile Include="ViewModel\Mensaje.cs" />
+    <Compile Include="ViewModel\ReportesViewModel.cs" />
     <Compile Include="ViewModel\RoleViewModel.cs" />
     <Compile Include="ViewModel\TurnoViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
@@ -548,6 +556,10 @@
       <DependentUpon>MyModel.edmx</DependentUpon>
       <LastGenOutput>MyModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ContentPG\fonts\fontawesome-webfont.eot" />
@@ -566,9 +578,12 @@
     <Content Include="Models\MyModel.edmx.diagram">
       <DependentUpon>MyModel.edmx</DependentUpon>
     </Content>
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\DescansoScript.js" />
     <Content Include="Scripts\EmpledoScript.js" />
+    <Content Include="Scripts\HorarioScript.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -579,6 +594,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ReporteScript.js" />
     <Content Include="Scripts\UsuarioScript.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -614,6 +630,11 @@
     <Content Include="Views\Descanso\Index.cshtml" />
     <Content Include="Views\Descanso\Create.cshtml" />
     <Content Include="Views\Descanso\Edit.cshtml" />
+    <Content Include="Views\Horario\Index.cshtml" />
+    <Content Include="Views\Horario\Create.cshtml" />
+    <Content Include="Views\Horario\Edit.cshtml" />
+    <Content Include="Views\Reporte\ControlMarcacion.cshtml" />
+    <Content Include="Views\Reporte\Imprimir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

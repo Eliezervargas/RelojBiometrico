@@ -1,0 +1,494 @@
+﻿@model RelojBio.ViewModel.HorarioViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+                <ul class="breadcrumb">
+                    <li><i class="icon-home2 position-left"></i><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                    <li><a href="@Url.Action("Index", "Horario")">Horarios</a></li>
+                    <li class="active">Nuevo Horario</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        @using (Html.BeginForm("Create", "Horario"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+            <div class="row">
+                <br />
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>General</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="x_content">
+
+
+                            <div class="row hidden">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.ShiftID, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.ShiftID, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ShiftID, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: uppercase" } })
+                                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 1100px; text-transform: uppercase" } })
+                                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.ShiftTypeID, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.DropDownListFor(model => model.ShiftTypeID, Model.ListaTipo, "Seleccione...", new { @class = "form-control", @style = "max-width: 1100px" })
+                                    @Html.ValidationMessageFor(model => model.ShiftTypeID, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="color" name="Color" id="Color" value="@Model.Color" />
+                                    @*@Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: uppercase" } })*@
+                                    @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+                            </div>
+
+
+                            @*<div class="row">
+            <br />
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-12" })
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-8">
+                @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: uppercase" } })
+                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>*@
+
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>Flexible</h2>
+                                            <ul class="nav navbar-right panel_toolbox"></ul>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                        <div class="x_content">
+
+                                            @*Base*@
+                                            <div class="row">
+                                                <br />
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="x_panel">
+                                                        <div class="x_title">
+                                                            <h2>Base</h2>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+
+                                                        <div class="x_content">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="row">
+                                                                        <br />
+                                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="x_panel">
+                                                                                <div class="x_title">
+                                                                                    <h2>Definicion Hora Entrada</h2>
+                                                                                    <div class="clearfix"></div>
+                                                                                </div>
+
+                                                                                <div class="x_content">
+                                                                                    <div class="col-md-2"></div>
+
+                                                                                    <div class="col-md-5">
+                                                                                        <div class="row">
+                                                                                            @Html.LabelFor(model => model.Start, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                                            <br />
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <br />
+                                                                                            @Html.LabelFor(model => model.RangeStartIni, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                                            <br />
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <br />
+                                                                                            @Html.LabelFor(model => model.RangeEndIni, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                                            <br />
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-3">
+                                                                                        <div class="row">
+                                                                                            <input type="time" name="Start" id="Start" value="@Model.Start">
+                                                                                            <br />
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <br />
+                                                                                            <input type="time" name="RangeStartIni" id="RangeStartIni" value="@Model.RangeStartIni">
+                                                                                            <br />
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <br />
+                                                                                            <input type="time" name="RangeEndIni" id="RangeEndIni" value="@Model.RangeEndIni">
+                                                                                            <br />
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-2"></div>
+                                                                                </div>
+
+                                                                                <br />
+                                                                            </div>
+                                                                            <br />
+
+                                                                        </div>
+                                                                        <br />
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="row">
+                                                                        <br />
+                                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="x_panel">
+                                                                                <div class="x_title">
+                                                                                    <h2>Definicion Hora de Salida</h2>
+                                                                                    <div class="clearfix"></div>
+                                                                                </div>
+
+                                                                                <div class="x_content">
+                                                                                    <div class="col-md-2"></div>
+
+                                                                                    <div class="col-md-5">
+                                                                                        <div class="row">
+                                                                                            @Html.LabelFor(model => model.End, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                                            <br />
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <br />
+                                                                                            @Html.LabelFor(model => model.RangeStartFin, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                                            <br />
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <br />
+                                                                                            @Html.LabelFor(model => model.RangeEndFin, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                                            <br />
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-3">
+                                                                                        <div class="row">
+                                                                                            <input type="time" name="End" id="End" value="@Model.Start">
+                                                                                            <br />
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <br />
+                                                                                            <input type="time" name="RangeStartFin" id="RangeStartFin" value="@Model.RangeStartIni">
+                                                                                            <br />
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <br />
+                                                                                            <input type="time" name="RangeEndFin" id="RangeEndFin" value="@Model.RangeEndIni">
+                                                                                            <br />
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-2"></div>
+                                                                                </div>
+
+                                                                                <br />
+                                                                            </div>
+                                                                            <br />
+
+                                                                        </div>
+                                                                        <br />
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+
+                                                            <div class="row">
+                                                                <div class="row">
+                                                                    <br />
+                                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                        <div class="x_panel">
+                                                                            <div class="x_title">
+                                                                                <h2></h2>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+
+                                                                            <div class="x_content">
+                                                                                <div class="row">
+                                                                                    <br />
+                                                                                    <div class="col-md-1"></div>
+                                                                                    <div class="col-md-2">
+                                                                                        @Html.LabelFor(model => model.AllowBefore, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                                    </div>
+                                                                                    <div class="col-md-1">
+                                                                                        @Html.EditorFor(model => model.AllowBefore)
+                                                                                    </div>
+                                                                                    <div class="col-md-1">
+                                                                                        <input type="time" name="BeforeStart" id="BeforeStart" value="@Model.BeforeStart">
+                                                                                    </div>
+                                                                                    <div class="col-md-1">
+                                                                                        <label>Minutos</label>
+                                                                                    </div>
+                                                                                    <br />
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="row">
+                                                                                <br />
+                                                                                <div class="col-md-1"></div>
+                                                                                <div class="col-md-2">
+                                                                                    @Html.LabelFor(model => model.AllowAfter, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                                </div>
+                                                                                <div class="col-md-1">
+                                                                                    @Html.EditorFor(model => model.AllowAfter)
+                                                                                </div>
+                                                                                <div class="col-md-1">
+                                                                                    <input type="time" name="AfterEnd" id="AfterEnd" value="@Model.AfterEnd">
+                                                                                </div>
+                                                                                <div class="col-md-1">
+                                                                                    <label>Minutos</label>
+                                                                                </div>
+                                                                                <br />
+                                                                            </div>
+
+                                                                            <br />
+                                                                        </div>
+                                                                        <br />
+
+                                                                    </div>
+                                                                    <br />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <br />
+                                                    </div>
+                                                    <br />
+
+                                                </div>
+                                                <br />
+                                            </div>
+
+                                            @*Adicional*@
+                                            <div class="row">
+                                                <br />
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="x_panel">
+                                                        <div class="x_title">
+                                                            <h2>Adicional</h2>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+
+                                                        <div class="x_content">
+                                                            <div class="row">
+                                                                <br />
+                                                                <div class="col-md-1"></div>
+                                                                <div class="col-md-1">
+                                                                    @Html.EditorFor(model => model.Late)
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    @Html.LabelFor(model => model.Late, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    @Html.LabelFor(model => model.LateCome, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input type="time" name="LateCome" id="LateCome" value="@Model.LateCome">
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    <label>Minutos</label>
+                                                                </div>
+                                                                <br />
+
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <br />
+                                                                <div class="col-md-1"></div>
+                                                                <div class="col-md-1">
+                                                                    @Html.EditorFor(model => model.Early)
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    @Html.LabelFor(model => model.Early, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    @Html.LabelFor(model => model.EarlyOut, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input type="time" name="EarlyOut" id="EarlyOut" value="@Model.EarlyOut">
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    <label>Minutos</label>
+                                                                </div>
+                                                                <br />
+
+                                                            </div>
+                                                        </div>
+
+                                                        <br />
+                                                    </div>
+                                                    <br />
+
+                                                </div>
+                                                <br />
+                                            </div>
+
+                                            @*Descanso*@
+                                            <div class="row">
+                                                <br />
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="x_panel">
+                                                        <div class="x_title">
+                                                            <h2>Descanso</h2>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+
+                                                        <div class="x_content">
+                                                            <select id="ListDescansoCodigoSeleccionados" multiple name="ListDescansoCodigoSeleccionados" class="form-control">
+                                                                @if (Model.ListaDescanso != null)
+                                                                {
+
+                                                                    foreach (RelojBio.Models.Break C in Model.ListaDescanso)
+                                                                    {
+                                                                        int wvalor = C.BreakID;
+                                                                        string wdes = C.Name;
+                                                                        bool wSw = false;
+
+                                                                        if (Model.ListDescansoSeleccionados != null)
+                                                                        {
+                                                                            foreach (var item in Model.ListDescansoSeleccionados)
+                                                                            {
+
+                                                                                if (wvalor == item.BreakID)
+                                                                                {
+                                                                                    <option selected value=@wvalor>@wdes</option>
+                                                                                    wSw = true;
+                                                                                }
+
+                                                                            }
+                                                                        }
+
+                                                                        if (wSw == false)
+                                                                        {
+                                                                            <option value=@wvalor>@wdes</option>
+                                                                        }
+
+
+                                                                    }
+
+                                                                }
+
+                                                            </select>
+
+                                                        </div>
+
+                                                        <br />
+                                                    </div>
+                                                    <br />
+
+                                                </div>
+                                                <br />
+                                            </div>
+
+
+                                        </div>
+
+                                        <br />
+                                    </div>
+                                    <br />
+
+                                </div>
+                                <br />
+                            </div>
+
+
+                            <div class="form-group">
+                                <br />
+
+                                <div class="col-md-offset-2 col-md-10">
+                                    <a class="btn btn-default" href="@Url.Action("Index", "Descanso")"> <span class="fa fa-mail-reply-all"></span> Regresar</a>
+
+                                    <button type="submit" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-plus"></span> Guardar
+                                    </button>
+                                </div>
+                                <br />
+                            </div>
+
+                        </div>
+
+                        <br />
+                    </div>
+                    <br />
+
+                </div>
+                <br />
+            </div>
+
+        }
+
+
+
+    </div>
+
+</div>
