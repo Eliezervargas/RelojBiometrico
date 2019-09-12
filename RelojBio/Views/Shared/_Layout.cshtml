@@ -201,7 +201,7 @@
                                         <ul class="nav child_menu">
                                             @if (wVerEmpresas == true)
                                             {
-                                                <li><a href="#">Empresas</a></li>
+                                                <li><a href="@Url.Action("Index","Empresa")">Empresas</a></li>
                                             }
                                             @if (wVerEmpleado == true)
                                             {
@@ -213,11 +213,11 @@
                                             }
                                             @if (wVerDiaFestivo == true)
                                             {
-                                                <li><a href="#">Días Festivos</a></li>
+                                                <li><a href="@Url.Action("Index","DiasFestivo")">Días Festivos</a></li>
                                             }
                                             @if (wVerCentroCosto == true)
                                             {
-                                                <li><a href="#">Centro de Costos</a></li>
+                                                <li><a href="@Url.Action("Index","CCosto")">Area</a></li>
                                             }
 
                                         </ul>
@@ -232,7 +232,7 @@
                                         <ul class="nav child_menu">
                                             @if (wverDispositivos == true)
                                             {
-                                                <li><a href="#">Dispositivos</a></li>
+                                                <li><a href="@Url.Action("Index","Dispositivos")">Dispositivos</a></li>
 
                                             }
                                             @if (wVerUsb == true)
