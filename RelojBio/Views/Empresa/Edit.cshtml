@@ -1,0 +1,296 @@
+﻿@model RelojBio.ViewModel.EmpresaViewModel
+
+@{
+    ViewBag.Title = "Modificar";
+}
+
+@*Estilo para las tablas*@
+<link href="~/ContentPG/Stylos/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/buttons.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/scroller.bootstrap.min.css" rel="stylesheet">
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                @*<h3>Empleado/</h3>*@
+                <ul class="breadcrumb">
+                    <li><i class="icon-home2 position-left"></i><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                    <li><a href="@Url.Action("Index", "Empresa")">Empleados</a></li>
+                    <li class="active">Modificar Empresa</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        @using (Html.BeginForm("Edit", "Empresa", FormMethod.Post, new { enctype = "multipart/form-data", id = "FrmEmpresa" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="hidden">
+                @Html.EditorFor(model => model.CompanyID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+
+            <div class="row">
+                <br />
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Imagen</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="x_content">
+                            <div id="capaimg">
+                                <div id="btnimg">
+                                    <label for="inputFile1" class="btn btn-primary btn-outlined" style="width:125px">Elegir imagen</label>
+                                    <input id="inputFile1" name="inputFile" type="file" accept="image/*" style="display: none" onchange="CargarImagen()" />
+                                    <label for="DeleteImagen1" class="btn btn-danger  btn-outlined" style="width:125px">Quitar imagen</label>
+                                    <input id="DeleteImagen1" onclick="QuitarImagen()" value="Quitar imagenes" style="display: none" type="button" />
+                                </div>
+                                <p></p>
+                                <br />
+                                <div class="col-md-3" style="font-size:medium">
+                                    <img id="Img1" align="middle" style="width:200px;height:200px" src="@ViewBag.wSrc" alt="Me">
+                                </div>
+                                <br />
+                            </div>
+                            <div>
+                                <h3> Puedes Elegir o Modificar una Imagen de la Empresa.</h3>
+                            </div>
+
+                        </div>
+
+                        <br />
+                    </div>
+                    <br />
+
+                </div>
+                <br />
+            </div>
+
+
+
+            <div class="row">
+                <br />
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>General</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="x_content">
+
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 1100px; text-transform: uppercase" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+
+                            </div>
+
+                        </div>
+
+                        <br />
+                    </div>
+                    <br />
+
+                </div>
+                <br />
+            </div>
+
+            <div class="row">
+                <br />
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Datos</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="x_content">
+
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.MainAddress, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.MainAddress, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 1100px; text-transform: uppercase" } })
+                                    @Html.ValidationMessageFor(model => model.MainAddress, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                    @Html.LabelFor(model => model.AlternateAddress, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    @Html.EditorFor(model => model.AlternateAddress, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 1100px; text-transform: uppercase" } })
+                                    @Html.ValidationMessageFor(model => model.AlternateAddress, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.CountryID, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.DropDownListFor(model => model.CountryID, Model.ListaPais, "Seleccione...", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                    @Html.LabelFor(model => model.StateID, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.DropDownListFor(model => model.StateID, Model.ListaEstado, "Seleccione...", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.StateID, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+                            </div>
+
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.CityID, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.DropDownListFor(model => model.CityID, Model.ListaCiudad, "Seleccione...", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CityID, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <br />
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: uppercase" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                    @Html.LabelFor(model => model.WebSite, htmlAttributes: new { @class = "control-label col-md-12" })
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    @Html.EditorFor(model => model.WebSite, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.WebSite, "", new { @class = "text-danger" })
+                                </div>
+                                <br />
+                            </div>
+
+                            <br />
+                        </div>
+                        <br />
+
+                    </div>
+                    <br />
+                </div>
+
+                <br />
+            </div>
+
+
+            <div class="row">
+                <br />
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="x_content">
+
+                            <div class="form-group">
+                                <br />
+
+                                <div class="col-md-offset-2 col-md-10">
+                                    <a class="btn btn-default" href="@Url.Action("Index", "Empresa")"> <span class="fa fa-mail-reply-all"></span> Regresar</a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-plus"></span> Guardar
+                                    </button>
+                                </div>
+                                <br />
+                            </div>
+                            <br />
+                        </div>
+                        <br />
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+
+        }
+
+
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/EmpresaScript.js"></script>
+}
+
+

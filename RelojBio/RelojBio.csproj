@@ -128,9 +128,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CCostoController.cs" />
     <Compile Include="Controllers\DepartamentosController.cs" />
     <Compile Include="Controllers\DescansoController.cs" />
+    <Compile Include="Controllers\DiasFestivoController.cs" />
+    <Compile Include="Controllers\DispositivosController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
+    <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalidadController.cs" />
     <Compile Include="Controllers\LoginRegistroController.cs" />
@@ -351,9 +355,13 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CCostoViewModel.cs" />
     <Compile Include="ViewModel\DepartamentosViewModel.cs" />
     <Compile Include="ViewModel\DescansoViewModel.cs" />
+    <Compile Include="ViewModel\DiasFestivoViewModel.cs" />
+    <Compile Include="ViewModel\DispositivosViewModel.cs" />
     <Compile Include="ViewModel\EmpleadoViewModel.cs" />
+    <Compile Include="ViewModel\EmpresaViewModel.cs" />
     <Compile Include="ViewModel\Genero.cs" />
     <Compile Include="ViewModel\LoginRegistroViewModel.cs" />
     <Compile Include="ViewModel\Mensaje.cs" />
@@ -366,8 +374,6 @@
     <Content Include="ContentPG\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ContentPG\images\aero%402x.png" />
     <Content Include="ContentPG\images\aero.png" />
-    <Content Include="ContentPG\images\alpha-horizontal.png" />
-    <Content Include="ContentPG\images\alpha.png" />
     <Content Include="ContentPG\images\blue%402x.png" />
     <Content Include="ContentPG\images\blue.css" />
     <Content Include="ContentPG\images\blue.png" />
@@ -377,8 +383,6 @@
     <Content Include="ContentPG\images\green.png" />
     <Content Include="ContentPG\images\grey%402x.png" />
     <Content Include="ContentPG\images\grey.png" />
-    <Content Include="ContentPG\images\hue-horizontal.png" />
-    <Content Include="ContentPG\images\hue.png" />
     <Content Include="ContentPG\images\img.jpg" />
     <Content Include="ContentPG\images\orange%402x.png" />
     <Content Include="ContentPG\images\orange.png" />
@@ -388,7 +392,6 @@
     <Content Include="ContentPG\images\purple.png" />
     <Content Include="ContentPG\images\red%402x.png" />
     <Content Include="ContentPG\images\red.png" />
-    <Content Include="ContentPG\images\saturation.png" />
     <Content Include="ContentPG\images\yellow%402x.png" />
     <Content Include="ContentPG\images\yellow.png" />
     <Content Include="ContentPG\Script\bootstrap-colorpicker.js" />
@@ -569,6 +572,7 @@
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\EmpledoScript.js" />
+    <Content Include="Scripts\EmpresaScript.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -614,9 +618,20 @@
     <Content Include="Views\Descanso\Index.cshtml" />
     <Content Include="Views\Descanso\Create.cshtml" />
     <Content Include="Views\Descanso\Edit.cshtml" />
+    <Content Include="Views\DiasFestivo\Create.cshtml" />
+    <Content Include="Views\DiasFestivo\Edit.cshtml" />
+    <Content Include="Views\DiasFestivo\Index.cshtml" />
+    <Content Include="Views\Empresa\Index.cshtml" />
+    <Content Include="Views\Empresa\Create.cshtml" />
+    <Content Include="Views\Empresa\Edit.cshtml" />
+    <Content Include="Views\CCosto\Index.cshtml" />
+    <Content Include="Views\CCosto\Create.cshtml" />
+    <Content Include="Views\CCosto\Edit.cshtml" />
+    <Content Include="Views\Dispositivos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagenes\Company\" />
     <Folder Include="Views\Localidad\" />
   </ItemGroup>
   <ItemGroup>

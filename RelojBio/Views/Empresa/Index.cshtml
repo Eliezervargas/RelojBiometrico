@@ -1,0 +1,85 @@
+﻿@model IEnumerable<RelojBio.Models.Company>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*Estilo para las tablas*@
+<link href="~/ContentPG/Stylos/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/buttons.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/scroller.bootstrap.min.css" rel="stylesheet">
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Empresa</h3>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Listado de Empresa</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+                        <p>
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Create", "Empresa")"><i class="fa fa-plus-square fa-lg"></i> Agregar</a>
+                        </p>
+                        <table id="datatable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="hidden">
+                                        @Html.DisplayNameFor(model => model.CompanyID)
+                                    </th>
+                                    <th>
+                                        <label>Nombre</label>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+
+                            @foreach (var item in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td class="hidden">
+                                            @Html.DisplayFor(modelItem => item.CompanyID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name) 
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", "Empresa", new { Id = item.CompanyID})"><i class="fa fa-edit fa-lg"></i> Editar</a>
+                                            <a class="confirm btn btn-danger btn-sm" href="@Url.Action("Eliminar", "Empresa", new { Id = item.CompanyID})"><i class="fa fa-trash fa-lg"></i> Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
