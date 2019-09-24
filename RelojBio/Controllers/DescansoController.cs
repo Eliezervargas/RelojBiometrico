@@ -1,11 +1,9 @@
 ﻿using RelojBio.Models;
 using RelojBio.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RelojBio.Controllers
@@ -115,12 +113,16 @@ namespace RelojBio.Controllers
                 {
                     var ODescanso = wdb.Break.Where(a => a.BreakID == Id).FirstOrDefault();
                     int wTipo = 1;
-                    if(ODescanso.Deduct == true)
+                    if (ODescanso.Deduct == true)
                     {
                         wTipo = 1;
-                    }else if(ODescanso.AutoDeduct == true){
+                    }
+                    else if (ODescanso.AutoDeduct == true)
+                    {
                         wTipo = 2;
-                    }else {
+                    }
+                    else
+                    {
                         wTipo = 3;
                     }
 
@@ -168,13 +170,13 @@ namespace RelojBio.Controllers
                     ODescanso.AuditUserUpd = User.Identity.Name;
                     ODescanso.AuditDateUpd = DateTime.Now;
                     ODescanso.AuditStationUpd = Environment.MachineName;
-                    if(Omodelo.Tipo == 1)
+                    if (Omodelo.Tipo == 1)
                     {
                         ODescanso.Deduct = true;
                         ODescanso.AutoDeduct = false;
                         ODescanso.NeedCheck = false;
                     }
-                    else if(Omodelo.Tipo == 2)
+                    else if (Omodelo.Tipo == 2)
                     {
                         ODescanso.Deduct = false;
                         ODescanso.AutoDeduct = true;

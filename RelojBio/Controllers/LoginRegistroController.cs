@@ -1,11 +1,11 @@
-﻿using System;
+﻿using RelojBio.Models;
+using RelojBio.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using RelojBio.Models;
-using RelojBio.ViewModel;
 
 namespace RelojBio.Controllers
 {
@@ -34,13 +34,13 @@ namespace RelojBio.Controllers
                     var OUsuario = wdb.User.Where(a => a.Login == OModelo.Login).FirstOrDefault();
                     if (OUsuario != null)
                     {
-                        if(OUsuario.Password == OModelo.Password)
+                        if (OUsuario.Password == OModelo.Password)
                         {
                             OMensaje.Tipo = "Exito";
                             OMensaje.Msg = "Bienvenido al Sistema Biometrico";
                             Session["Mensaje"] = OMensaje;
 
-                            int Timeout = 200; 
+                            int Timeout = 200;
                             var Ticket = new FormsAuthenticationTicket(OModelo.Login, false, Timeout);
                             string encrypted = FormsAuthentication.Encrypt(Ticket);
                             var cookies = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted)
@@ -69,7 +69,7 @@ namespace RelojBio.Controllers
                             if (ListRolOpciones != null)
                                 Session["ListOpciones"] = ListRolOpciones;
 
-                            return RedirectToAction("Index","Home");
+                            return RedirectToAction("Index", "Home");
                         }
                         else
                         {
@@ -91,7 +91,7 @@ namespace RelojBio.Controllers
             catch (Exception e)
             {
                 OMensaje.Tipo = "Error";
-                OMensaje.Msg = e.ToString() ;
+                OMensaje.Msg = e.ToString();
                 Session["Mensaje"] = OMensaje;
                 return View(OModelo);
 

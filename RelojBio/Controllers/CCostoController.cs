@@ -1,11 +1,9 @@
 ﻿using RelojBio.Models;
 using RelojBio.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RelojBio.Controllers
@@ -40,7 +38,7 @@ namespace RelojBio.Controllers
 
                     var OVMCCosto = new CCostoViewModel
                     {
-                       
+
 
                     };
 
@@ -123,7 +121,7 @@ namespace RelojBio.Controllers
                 {
                     var OCCosto = wdb.CostCenter.Where(a => a.CostCenterID == Id).FirstOrDefault();
 
-                   
+
 
                     var OVMCCosto = new CCostoViewModel
                     {

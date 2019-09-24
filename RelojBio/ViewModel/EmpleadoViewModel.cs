@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RelojBio.ViewModel
@@ -113,6 +110,6 @@ namespace RelojBio.ViewModel
 
         public SelectList ListaGenero { get; set; }
 
-        
+
     }
 }

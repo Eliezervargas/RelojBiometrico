@@ -1,13 +1,12 @@
-﻿using System;
+﻿using RelojBio.Models;
+using RelojBio.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using RelojBio.Models;
-using RelojBio.ViewModel;
 
 
 namespace RelojBio.Controllers
@@ -18,10 +17,10 @@ namespace RelojBio.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            
+
             using (RELOJBIOEntities wdb = new RELOJBIOEntities())
             {
-                var ListEmpleado = wdb.Employee.OrderByDescending(a=> a.EmployeeID).ToList();
+                var ListEmpleado = wdb.Employee.OrderByDescending(a => a.EmployeeID).ToList();
 
                 return View(ListEmpleado);
             }
@@ -79,7 +78,7 @@ namespace RelojBio.Controllers
                 OMensaje.Tipo = "Error";
                 OMensaje.Msg = e.ToString();
                 Session["Mensaje"] = OMensaje;
-                return RedirectToAction("Index","Empleado");
+                return RedirectToAction("Index", "Empleado");
 
             }
 
@@ -290,7 +289,7 @@ namespace RelojBio.Controllers
                         ListaPais = new SelectList(ListPais, "CountryID", "Name"),
                         ListaEstado = new SelectList(LisEstado, "StateID", "Name"),
                         ListaCiudad = new SelectList(ListCiudad, "CityID", "Name"),
-                        ListaGenero = new SelectList(ListGenero,"Id","Nombre")
+                        ListaGenero = new SelectList(ListGenero, "Id", "Nombre")
 
                     };
 
@@ -335,7 +334,7 @@ namespace RelojBio.Controllers
             {
                 using (RELOJBIOEntities wdb = new RELOJBIOEntities())
                 {
-                    var OEMpleado = wdb.Employee.Where(a=> a.EmployeeID == Omodelo.EmpleadoId).FirstOrDefault();
+                    var OEMpleado = wdb.Employee.Where(a => a.EmployeeID == Omodelo.EmpleadoId).FirstOrDefault();
 
                     OEMpleado.FirstName = Omodelo.Nombre;
                     OEMpleado.LastName = Omodelo.Apellido;

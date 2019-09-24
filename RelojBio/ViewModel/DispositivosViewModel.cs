@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace RelojBio.ViewModel
 {
@@ -29,7 +25,7 @@ namespace RelojBio.ViewModel
 
         [Display(Name = "Contraseña")]
         public string ConnectPwd { get; set; }
-        
+
 
         [Display(Name = "Estado")]
         public bool IsActive { get; set; }

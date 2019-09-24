@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RelojBio.Controllers
@@ -32,7 +31,7 @@ namespace RelojBio.Controllers
 
 
 
-                 List<DiasFestivoViewModel> ListDiasFestivo = wdb.Database.SqlQuery<DiasFestivoViewModel>("select A.HolidayTypeID, A.Code, A.Name, B.StartDate from AssistControl.HolidayType A inner join  AssistControl.HolidayDetails B ON A.HolidayTypeID = B.HolidayTypeID").ToList();
+                List<DiasFestivoViewModel> ListDiasFestivo = wdb.Database.SqlQuery<DiasFestivoViewModel>("select A.HolidayTypeID, A.Code, A.Name, B.StartDate from AssistControl.HolidayType A inner join  AssistControl.HolidayDetails B ON A.HolidayTypeID = B.HolidayTypeID").ToList();
 
                 return View(ListDiasFestivo);
 
@@ -49,13 +48,13 @@ namespace RelojBio.Controllers
             {
                 using (RELOJBIOEntities wdb = new RELOJBIOEntities())
                 {
-                   
 
-                   
+
+
 
                     var OVMDiasFestivo = new DiasFestivoViewModel
                     {
-                      
+
                     };
 
                     return View(OVMDiasFestivo);
@@ -87,7 +86,7 @@ namespace RelojBio.Controllers
                     var OUltimoDiasFestivoCode = wdb.HolidayType.OrderByDescending(a => a.Code).FirstOrDefault();
                     int wCode = (OUltimoDiasFestivoCode.Code) + 1;
 
-                   
+
                     var ODiasFestivoNuevo = new HolidayType
                     {
                         Code = wCode,
@@ -147,7 +146,7 @@ namespace RelojBio.Controllers
 
                 using (RELOJBIOEntities wdb = new RELOJBIOEntities())
                 {
-                   
+
                     return View(Omodelo);
 
                 }
@@ -174,9 +173,9 @@ namespace RelojBio.Controllers
                         HolidayTypeID = ODiasFestivo.HolidayTypeID,
                         Name = ODiasFestivo.Name,
                         StartDate = ODiasFestivoDetalle.StartDate
-                        
 
-                };
+
+                    };
 
                     return View(OVMDiasFestivo);
 
@@ -277,7 +276,7 @@ namespace RelojBio.Controllers
                     wdb.HolidayType.Remove(ODiasFestivo);
                     wdb.SaveChanges();
 
-                   
+
                     OMensaje.Tipo = "Exito";
                     OMensaje.Msg = "Dias Festivo Eliminado con exito";
                     Session["Mensaje"] = OMensaje;

@@ -360,11 +360,11 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
+    <Compile Include="ViewModel\ControlAsistenciaBNViewModel.cs" />
+    <Compile Include="ViewModel\ControlAsistenciaViewModel.cs" />
     <Compile Include="ViewModel\ControlMarcacionViewModel.cs" />
-=======
     <Compile Include="ViewModel\CCostoViewModel.cs" />
->>>>>>> b3645e83391aab95e16ef195d1a3b4d3e41abe98
+    <Compile Include="ViewModel\ControlTiempoLibreViewModel.cs" />
     <Compile Include="ViewModel\DepartamentosViewModel.cs" />
     <Compile Include="ViewModel\DescansoViewModel.cs" />
     <Compile Include="ViewModel\DiasFestivoViewModel.cs" />
@@ -377,6 +377,9 @@
     <Compile Include="ViewModel\Mensaje.cs" />
     <Compile Include="ViewModel\ReportesViewModel.cs" />
     <Compile Include="ViewModel\RoleViewModel.cs" />
+    <Compile Include="ViewModel\SeguimientoExepcionViewModel.cs" />
+    <Compile Include="ViewModel\SeguimientoFichajeViewModel.cs" />
+    <Compile Include="ViewModel\SeguimientoMarcacionViewModel.cs" />
     <Compile Include="ViewModel\TurnoViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
   </ItemGroup>
@@ -589,11 +592,8 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DescansoScript.js" />
     <Content Include="Scripts\EmpledoScript.js" />
-<<<<<<< HEAD
     <Content Include="Scripts\HorarioScript.js" />
-=======
     <Content Include="Scripts\EmpresaScript.js" />
->>>>>>> b3645e83391aab95e16ef195d1a3b4d3e41abe98
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -640,13 +640,11 @@
     <Content Include="Views\Descanso\Index.cshtml" />
     <Content Include="Views\Descanso\Create.cshtml" />
     <Content Include="Views\Descanso\Edit.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Horario\Index.cshtml" />
     <Content Include="Views\Horario\Create.cshtml" />
     <Content Include="Views\Horario\Edit.cshtml" />
     <Content Include="Views\Reporte\ControlMarcacion.cshtml" />
     <Content Include="Views\Reporte\Imprimir.cshtml" />
-=======
     <Content Include="Views\DiasFestivo\Create.cshtml" />
     <Content Include="Views\DiasFestivo\Edit.cshtml" />
     <Content Include="Views\DiasFestivo\Index.cshtml" />
@@ -657,7 +655,13 @@
     <Content Include="Views\CCosto\Create.cshtml" />
     <Content Include="Views\CCosto\Edit.cshtml" />
     <Content Include="Views\Dispositivos\Index.cshtml" />
->>>>>>> b3645e83391aab95e16ef195d1a3b4d3e41abe98
+    <Content Include="Views\Shared\_LayoutReporte.cshtml" />
+    <Content Include="Views\Reporte\ControlAsistencia.cshtml" />
+    <Content Include="Views\Reporte\ControlTiempoLibre.cshtml" />
+    <Content Include="Views\Reporte\SeguimientoExepcion.cshtml" />
+    <Content Include="Views\Reporte\SeguimientoMarcacion.cshtml" />
+    <Content Include="Views\Reporte\ControlAsistenciaBN.cshtml" />
+    <Content Include="Views\Reporte\SeguimientoFichaje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

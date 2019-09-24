@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using RelojBio.Models;
+using RelojBio.ViewModel;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using RelojBio.Models;
-using RelojBio.ViewModel;
 
 namespace RelojBio.Controllers
 {
@@ -36,19 +34,19 @@ namespace RelojBio.Controllers
             {
                 using (RELOJBIOEntities wdb = new RELOJBIOEntities())
                 {
-                    
+
 
                     var ListPais = wdb.Country.ToList();
                     var LisEstado = wdb.State.ToList();
                     var ListCiudad = wdb.City.ToList();
-                    
+
                     var OVMEmpresa = new EmpresaViewModel
                     {
-                        
+
                         ListaPais = new SelectList(ListPais, "CountryID", "Name"),
                         ListaEstado = new SelectList(LisEstado, "StateID", "Name"),
                         ListaCiudad = new SelectList(ListCiudad, "CityID", "Name"),
-                        
+
                     };
 
                     return View(OVMEmpresa);
@@ -96,7 +94,7 @@ namespace RelojBio.Controllers
                         CountryID = Omodelo.CountryID,
                         CityID = Omodelo.CityID,
                         StateID = Omodelo.StateID,
-                        
+
 
                     };
                     wdb.Company.Add(OEmpresaNuevo);
@@ -144,16 +142,16 @@ namespace RelojBio.Controllers
 
                 using (RELOJBIOEntities wdb = new RELOJBIOEntities())
                 {
-                    
+
 
                     var ListPais = wdb.Country.ToList();
                     var LisEstado = wdb.State.ToList();
                     var ListCiudad = wdb.City.ToList();
-                  
+
                     Omodelo.ListaPais = new SelectList(ListPais, "CountryID", "Name");
                     Omodelo.ListaEstado = new SelectList(LisEstado, "StateID", "Name");
                     Omodelo.ListaCiudad = new SelectList(ListCiudad, "CityID", "Name");
-                   
+
 
                     return View(Omodelo);
                 }
@@ -173,11 +171,11 @@ namespace RelojBio.Controllers
                 {
                     var OEmpresa = wdb.Company.Where(a => a.CompanyID == Id).FirstOrDefault();
 
-                   
+
                     var ListPais = wdb.Country.ToList();
                     var LisEstado = wdb.State.ToList();
                     var ListCiudad = wdb.City.ToList();
-                    
+
 
                     var OVMEmpresa = new EmpresaViewModel
                     {
@@ -193,12 +191,12 @@ namespace RelojBio.Controllers
                         CountryID = OEmpresa.CountryID,
                         CityID = OEmpresa.CityID,
                         StateID = OEmpresa.StateID,
-                       
-                       
+
+
                         ListaPais = new SelectList(ListPais, "CountryID", "Name"),
                         ListaEstado = new SelectList(LisEstado, "StateID", "Name"),
                         ListaCiudad = new SelectList(ListCiudad, "CityID", "Name"),
-                       
+
 
                     };
 
@@ -255,7 +253,7 @@ namespace RelojBio.Controllers
                     OEMpresa.CountryID = Omodelo.CountryID;
                     OEMpresa.CityID = Omodelo.CityID;
                     OEMpresa.StateID = Omodelo.StateID;
-                   
+
 
                     wdb.Entry(OEMpresa).State = EntityState.Modified;
                     wdb.SaveChanges();
@@ -307,19 +305,19 @@ namespace RelojBio.Controllers
 
                 using (RELOJBIOEntities wdb = new RELOJBIOEntities())
                 {
-                   
 
-                    
+
+
                     var ListPais = wdb.Country.ToList();
                     var LisEstado = wdb.State.ToList();
                     var ListCiudad = wdb.City.ToList();
-                    
 
-                   
+
+
                     Omodelo.ListaPais = new SelectList(ListPais, "CountryID", "Name");
                     Omodelo.ListaEstado = new SelectList(LisEstado, "StateID", "Name");
                     Omodelo.ListaCiudad = new SelectList(ListCiudad, "CityID", "Name");
-                  
+
 
                     return View(Omodelo);
                 }

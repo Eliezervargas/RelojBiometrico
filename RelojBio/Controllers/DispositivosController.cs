@@ -1,11 +1,9 @@
 ﻿using RelojBio.Models;
 using RelojBio.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RelojBio.Controllers
@@ -131,7 +129,7 @@ namespace RelojBio.Controllers
 
                     var OVMDispositivos = new DispositivosViewModel
                     {
-                        
+
                         TerminalID = ODispositivos.TerminalID,
                         Name = ODispositivos.Name,
                         ConnectPwd = ODispositivos.ConnectPwd,
@@ -140,7 +138,7 @@ namespace RelojBio.Controllers
                         Port = 0,
                         TcpIp = ODispositivos.TcpIp,
                         IsActive = true
-                       
+
                     };
 
                     return View(OVMDispositivos);

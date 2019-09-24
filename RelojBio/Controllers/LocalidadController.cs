@@ -1,8 +1,6 @@
 ﻿using RelojBio.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RelojBio.Controllers
@@ -21,7 +19,7 @@ namespace RelojBio.Controllers
 
             using (RELOJBIOEntities wdb = new RELOJBIOEntities())
             {
-                 ListEstado = wdb.State.Where(a => a.CountryID == wCountryID).ToList();
+                ListEstado = wdb.State.Where(a => a.CountryID == wCountryID).ToList();
 
             }
             return new JsonResult { Data = ListEstado, JsonRequestBehavior = JsonRequestBehavior.AllowGet };

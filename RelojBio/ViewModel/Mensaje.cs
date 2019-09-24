@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace RelojBio.ViewModel
+﻿namespace RelojBio.ViewModel
 {
     public class Mensaje
     {

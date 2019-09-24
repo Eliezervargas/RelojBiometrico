@@ -1,11 +1,9 @@
 ﻿using RelojBio.Models;
 using RelojBio.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RelojBio.Controllers
@@ -172,7 +170,7 @@ namespace RelojBio.Controllers
                     var ListRoles = wdb.Role.ToList();
                     var ListCompaniaSeleccionadas = wdb.UserCompany.Where(a => a.UserID == OUsuario.UserID).ToList();
                     var ListRolesSeleccionados = wdb.UserRole.Where(a => a.UserID == OUsuario.UserID).ToList();
-                
+
 
                     var OVMUsuario = new UserViewModel
                     {

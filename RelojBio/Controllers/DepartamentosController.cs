@@ -1,11 +1,9 @@
 ﻿using RelojBio.Models;
 using RelojBio.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RelojBio.Controllers
@@ -36,16 +34,16 @@ namespace RelojBio.Controllers
             {
                 using (RELOJBIOEntities wdb = new RELOJBIOEntities())
                 {
-                    
+
 
                     var ListEmpresa = wdb.Company.ToList();
                     var ListTur = wdb.Schedule.ToList();
-                  
+
                     var OVMDepartamentos = new DepartamentosViewModel
                     {
                         ListaEmpresa = new SelectList(ListEmpresa, "CompanyID", "Name"),
                         ListaTurno = new SelectList(ListTur, "ScheduleID", "Name"),
-                      
+
                     };
 
                     return View(OVMDepartamentos);
@@ -77,8 +75,8 @@ namespace RelojBio.Controllers
 
                     var OUltimoDepartaCode = wdb.Department.OrderByDescending(a => a.DepartmentID).FirstOrDefault();
                     int wCode = (OUltimoDepartaCode.Code) + 1;
-                   
-                 
+
+
                     var ODepartamentoNuevo = new Department
                     {
                         Code = wCode,
@@ -86,13 +84,13 @@ namespace RelojBio.Controllers
                         Name = Omodelo.Name,
                         CompanyID = Omodelo.CompanyID,
                         ScheduleID = Omodelo.ScheduleID
-                        
+
                     };
                     wdb.Department.Add(ODepartamentoNuevo);
                     wdb.SaveChanges();
 
 
-                
+
                     OMensaje.Tipo = "Exito";
                     OMensaje.Msg = "Departamento Creado con exito";
                     Session["Mensaje"] = OMensaje;
@@ -118,11 +116,11 @@ namespace RelojBio.Controllers
 
                     var ListEmpresa = wdb.Company.ToList();
                     var ListTur = wdb.Schedule.ToList();
-                   
+
 
                     Omodelo.ListaEmpresa = new SelectList(ListEmpresa, "CompanyID", "Name");
                     Omodelo.ListaTurno = new SelectList(ListTur, "ScheduleID", "Name");
-                   
+
 
                     return View(Omodelo);
                 }
@@ -144,7 +142,7 @@ namespace RelojBio.Controllers
 
                     var ListEmpresa = wdb.Company.ToList();
                     var ListTur = wdb.Schedule.ToList();
-                   
+
 
                     var OVMDepartamento = new DepartamentosViewModel
                     {
@@ -156,7 +154,7 @@ namespace RelojBio.Controllers
 
                         ListaEmpresa = new SelectList(ListEmpresa, "CompanyID", "Name"),
                         ListaTurno = new SelectList(ListTur, "ScheduleID", "Name"),
-                       
+
 
                     };
 
@@ -192,12 +190,12 @@ namespace RelojBio.Controllers
                     OEMDepata.Name = Omodelo.Name;
                     OEMDepata.CompanyID = Omodelo.CompanyID;
                     OEMDepata.ScheduleID = Omodelo.ScheduleID;
-                   
-                 
+
+
                     wdb.Entry(OEMDepata).State = EntityState.Modified;
                     wdb.SaveChanges();
 
-                  
+
 
                     OMensaje.Tipo = "Exito";
                     OMensaje.Msg = "Departamento Fue Modificado con exito";
@@ -220,15 +218,15 @@ namespace RelojBio.Controllers
 
                 using (RELOJBIOEntities wdb = new RELOJBIOEntities())
                 {
-                    
-        
+
+
                     var ListEmpresa = wdb.Company.ToList();
                     var ListTur = wdb.Schedule.ToList();
-                   
+
 
                     Omodelo.ListaEmpresa = new SelectList(ListEmpresa, "CompanyID", "Name");
                     Omodelo.ListaTurno = new SelectList(ListTur, "ScheduleID", "Name");
-                  
+
 
                     return View(Omodelo);
                 }
