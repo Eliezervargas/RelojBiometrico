@@ -1,0 +1,137 @@
+﻿@model IEnumerable<RelojBio.ViewModel.ControlTiempoLibreViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@*Estilo para las tablas*@
+<link href="~/ContentPG/Stylos/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/buttons.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/ContentPG/Stylos/scroller.bootstrap.min.css" rel="stylesheet">
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Control de Timpo Libre</h3>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Listado</h2>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+
+                        <table id="datatable" class="table table-striped table-bordered">
+                            <tr>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EmployeeId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DepartmentName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EmployeePin)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EmployeeName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DayNames)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PunchTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ScheduleName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EntryTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OutputTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CheckIn)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CheckOut)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Lounch)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.LateTime)
+                                </th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(model => item.EmployeeId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.DepartmentName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.EmployeePin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.EmployeeName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.DayNames)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.PunchTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.ScheduleName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.EntryTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.OutputTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.CheckIn)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.CheckOut)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Lounch)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.LateTime)
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
