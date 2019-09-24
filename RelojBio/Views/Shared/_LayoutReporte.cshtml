@@ -1,0 +1,143 @@
+﻿@using RelojBio.ViewModel;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <title>@ViewBag.Title - Reloj Biometrico</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/ContentPG/Stylos/bootstrap.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/font-awesome.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/nprogress.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/green.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/jqvmap.min.css" rel="stylesheet" />
+    <link href="~/ContentPG/Stylos/daterangepicker.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/custom.min.css" rel="stylesheet">
+    <link href="~/ContentPG/Stylos/toastr.min.css" rel="stylesheet" />
+    <link href="~/ContentPG/Stylos/bootstrap-datetimepicker.css" rel="stylesheet">
+
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+          
+            @RenderBody()
+
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/ContentPG/Script/jquery.min.js"></script>
+    <script src="~/ContentPG/Script/toastr.min.js"></script>
+    <script src="~/ContentPG/Script/bootstrap.min.js"></script>
+    <script src="~/ContentPG/Script/fastclick.js"></script>
+    <script src="~/ContentPG/Script/nprogress.js"></script>
+    <script src="~/ContentPG/Script/Chart.min.js"></script>
+    <script src="~/ContentPG/Script/gauge.min.js"></script>
+    <script src="~/ContentPG/Script/bootstrap-progressbar.min.js"></script>
+    <script src="~/ContentPG/Script/icheck.min.js"></script>
+    <script src="~/ContentPG/Script/skycons.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.pie.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.time.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.stack.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.resize.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.orderBars.js"></script>
+    <script src="~/ContentPG/Script/jquery.flot.spline.min.js"></script>
+    <script src="~/ContentPG/Script/curvedLines.js"></script>
+    <script src="~/ContentPG/Script/date.js"></script>
+    <script src="~/ContentPG/Script/jquery.vmap.js"></script>
+    <script src="~/ContentPG/Script/jquery.vmap.world.js"></script>
+    <script src="~/ContentPG/Script/jquery.vmap.sampledata.js"></script>
+    <script src="~/ContentPG/Script/moment.min.js"></script>
+    <script src="~/ContentPG/Script/daterangepicker.js"></script>
+    <script src="~/ContentPG/Script/toastr.min.js"></script>
+
+
+    <script src="~/ContentPG/Script/jquery.dataTables.min.js"></script>
+    <script src="~/ContentPG/Script/dataTables.bootstrap.min.js"></script>
+    <script src="~/ContentPG/Script/dataTables.buttons.min.js"></script>
+    <script src="~/ContentPG/Script/buttons.bootstrap.min.js"></script>
+    <script src="~/ContentPG/Script/buttons.flash.min.js"></script>
+    <script src="~/ContentPG/Script/buttons.html5.min.js"></script>
+    <script src="~/ContentPG/Script/buttons.print.min.js"></script>
+    <script src="~/ContentPG/Script/dataTables.fixedHeader.min.js"></script>
+    <script src="~/ContentPG/Script/dataTables.keyTable.min.js"></script>
+    <script src="~/ContentPG/Script/dataTables.responsive.min.js"></script>
+    <script src="~/ContentPG/Script/responsive.bootstrap.js"></script>
+    <script src="~/ContentPG/Script/dataTables.scroller.min.js"></script>
+    <script src="~/ContentPG/Script/jszip.min.js"></script>
+    <script src="~/ContentPG/Script/pdfmake.min.js"></script>
+    <script src="~/ContentPG/Script/vfs_fonts.js"></script>
+
+
+    <script src="~/ContentPG/Script/custom.min.js"></script>
+
+
+
+    <!-- bootstrap-datetimepicker -->
+    <script src="~/ContentPG/Script/bootstrap-datetimepicker.min.js"></script>
+    <!-- Bootstrap Colorpicker -->
+    <script src="~/ContentPG/Script/bootstrap-colorpicker.min.js"></script>
+
+
+
+    @if (Session["Mensaje"] != null)
+    {
+
+        Mensaje OMensaje = Session["Mensaje"] as Mensaje;
+
+        var wTipo = OMensaje.Tipo;
+        var wMsg = OMensaje.Msg;
+
+        if (OMensaje.Tipo == "Exito")
+        {
+            <script type="text/javascript">
+            toastr.success('@wMsg.ToString()', '');
+            </script>
+
+        }
+        else if (OMensaje.Tipo == "Error")
+        {
+            <script type="text/javascript">
+            toastr.error('@wMsg.ToString()', 'Error');
+            </script>
+
+        }
+        else if (OMensaje.Tipo == "Alerta")
+        {
+            <script type="text/javascript">
+            toastr.warning('@wMsg.ToString()', 'Alerta');
+            </script>
+
+        }
+        else if (OMensaje.Tipo == "Info")
+        {
+            <script type="text/javascript">
+            toastr.info('@wMsg.ToString()', 'Información');
+            </script>
+
+        }
+
+
+        Session["Mensaje"] = null;
+
+
+
+    }
+
+
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
